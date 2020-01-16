@@ -1,0 +1,99 @@
+.card {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 0 6px rgba(128, 128, 128, 0.1);
+    border-radius: 5px;
+    img {
+        display: block;
+        background: #f7f6f6;
+        margin-bottom: 12px;
+        width: 100%;
+        max-width: 120px;
+    }
+    h2 {
+        color: #969696;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: 400;
+    }
+    .priceCon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        span {
+            margin: 2px 5px;
+        }
+    }
+    .cut-out-price {
+        color: #aaa;
+        position: relative;
+        font-size: 1.5rem;
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            background-color: currentColor;
+            height: 1px;
+            left: 0;
+            top: 50%;
+        }
+    }
+    .price {
+        color: #31305F;
+        font-size: 1.7rem;
+        font-weight: bold;
+    }
+    .button {
+        background: #f9b02c;
+        color: #fff;
+        text-align: center;
+        border: none;
+        border-radius: 50px;
+        padding: 5px 10px;
+        font-size: 1.4rem;
+        line-height: 1;
+        margin-top: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        &:hover {
+            background-color: lightsalmon;
+        }
+    }
+    .foodType {
+        padding: 2px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        border: solid 1px currentColor;
+        .dot {
+            width: 8px;
+            height: 8px;
+            display: block;
+            border-radius: 100%;
+            background-color: currentColor;
+        }
+        &.veg {
+            color: #00c500;
+        }
+        &.nonVeg {
+            color: red;
+        }
+    }
+    .weight {
+        font-size: 1.4rem;
+        color: #989898;
+        line-height: 1.2rem;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-weight: 600;
+    }
+}

@@ -1,0 +1,22 @@
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.icon {
+    padding: 0 14px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+}

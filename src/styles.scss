@@ -1,0 +1,29 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #f6f6f6;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mat-toolbar.mat-primary {
+    background: #f9b02c !important;
+    padding: 0 !important;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    padding: 0 10px 0 5px !important;
+}
