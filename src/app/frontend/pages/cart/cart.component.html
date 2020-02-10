@@ -1,0 +1,44 @@
+<div class="cartWrapper">
+    <header>
+        <span class="close"><mat-icon>close</mat-icon></span>
+        <div class="title">My Cart (4)<span>Pincode: 110019</span></div>
+        <span class="separator"></span>
+        <a routerLink="/">
+            <mat-icon>home</mat-icon>
+        </a>
+    </header>
+    <div class="itemList">
+        <ul>
+            <li>
+                <div class="col leftCol">
+                    <div class="imgCol">
+                        <img src="./../../../../assets/images/apple.jpg" alt="" />
+                    </div>
+                    <div class="details">
+                        <h3 class="name">Mango</h3>
+                        <p class="price">{{ 10 | currency: '&#8377; ' }}/kg</p>
+                        <app-product-counter></app-product-counter>
+                    </div>
+                </div>
+                <div class="col rightCol rupees">
+                    = {{ 240 | currency: '&#8377; ' }}
+                </div>
+            </li>
+            <li>
+                <div class="col leftCol">
+                    <div class="imgCol">
+                        <img src="./../../../../assets/images/apple.jpg" alt="" />
+                    </div>
+                    <div class="details">
+                        <h3 class="name">Mango</h3>
+                        <p class="price">{{ 10 | currency: '&#8377; ' }}/kg</p>
+                        <app-product-counter></app-product-counter>
+                    </div>
+                </div>
+                <div class="col rightCol rupees">
+                    = {{ 240 | currency: '&#8377; ' }}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="counterWrapper">
+    <button class="button" (click)="showProductCounter()" *ngIf="!couterStatus">
+    Add
+  </button>
+    <div class="counter" *ngIf="couterStatus">
+        <button (click)="remove()">-</button>
+        <span class="quantity">{{ product.quantity }}{{ product.unit }}</span>
+        <button (click)="add()">+</button>
+    </div>
+</div>

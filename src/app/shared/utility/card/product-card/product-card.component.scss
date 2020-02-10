@@ -1,8 +1,14 @@
+.cardWrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+
 .card {
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 30px 20px 20px;
     align-items: center;
     position: relative;
     box-shadow: 0 0 6px rgba(128, 128, 128, 0.1);
@@ -15,8 +21,8 @@
         max-width: 120px;
     }
     h2 {
-        color: #969696;
-        font-size: 1.5rem;
+        color: #333;
+        font-size: 2rem;
         line-height: 2rem;
         text-align: center;
         margin-bottom: 10px;
@@ -35,6 +41,7 @@
         color: #aaa;
         position: relative;
         font-size: 1.5rem;
+        font-weight: 300;
         &:after {
             content: '';
             position: absolute;
@@ -46,26 +53,9 @@
         }
     }
     .price {
-        color: #31305F;
+        color: #31305f;
         font-size: 1.7rem;
         font-weight: bold;
-    }
-    .button {
-        background: #f9b02c;
-        color: #fff;
-        text-align: center;
-        border: none;
-        border-radius: 50px;
-        padding: 5px 10px;
-        font-size: 1.4rem;
-        line-height: 1;
-        margin-top: 20px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        &:hover {
-            background-color: lightsalmon;
-        }
     }
     .foodType {
         padding: 2px;
@@ -87,13 +77,16 @@
             color: red;
         }
     }
-    .weight {
+    .inStock {
         font-size: 1.4rem;
         color: #989898;
         line-height: 1.2rem;
         position: absolute;
         top: 10px;
         right: 10px;
-        font-weight: 600;
+        font-weight: 300;
+        span {
+            font-weight: 600;
+        }
     }
 }

@@ -1,0 +1,54 @@
+:host {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f9b02c;
+    position: relative;
+}
+
+:host::after {
+    content: '';
+    background-image: url('./../../../../assets/images/login_bg.jpg');
+    background-size: cover;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 0;
+}
+
+.mat-card {
+    align-self: center;
+    position: relative;
+    z-index: 1;
+}
+
+.mat-form-field {
+    width: 100%;
+    min-width: 300px;
+}
+
+mat-card-title {
+    color: #f9b02c;
+    font-weight: 300;
+}
+
+mat-card-title,
+mat-card-content {
+    display: flex;
+    justify-content: center;
+}
+
+.error {
+    padding: 16px;
+    width: 300px;
+    color: white;
+    background-color: red;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+}
