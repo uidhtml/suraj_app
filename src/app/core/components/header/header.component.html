@@ -1,18 +1,53 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <div class="logoWrapper">
-            <button mat-icon-button aria-label="Hamburger menu">
-        <mat-icon class="material-icons">menu</mat-icon></button
-      ><span class="logo">Haxxix</span>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <div class="logoWrapper">
+      <button *ngIf="isLoggedIn" mat-icon-button aria-label="Hamburger menu">
+        <mat-icon class="material-icons" (click)="openSideMenu()"
+          >menu</mat-icon
+        >
+      </button>
+      <span class="logo">Example</span>
     </div>
     <span class="spacer"></span>
-    <!-- <button mat-icon-button aria-label="Go to Contact us page">
-          <mat-icon class="material-icons" matBadge="1" matBadgeColor="accent">notifications</mat-icon>
-        </button> -->
-            <button mat-icon-button aria-label="Go to Shopping cart page" (click)="gotoCartPage()">
-      <mat-icon class="material-icons" matBadge="2" matBadgeColor="accent">
+    <div class="userActionCon" *ngIf="!isLoggedIn">
+      <a routerLink="/{{ pageName }}/login">Login</a>|
+      <a routerLink="/{{ pageName }}/signup">Register</a>
+    </div>
+    <div class="loggerInfo" *ngIf="isLoggedIn && loggerData">
+      <figure>
+        <div class="imgCol" *ngIf="loggerData.image !== 'default_user.jpg'">
+          <img
+            class="img"
+            src="./assets/uploads/images/profile_pic/{{ loggerData.image }}"
+          />
+        </div>
+        <i
+          class="material-icons"
+          *ngIf="loggerData.image === 'default_user.jpg'"
+          >person</i
+        >
+        <figcaption>{{ loggerData.firstName }}</figcaption>
+      </figure>
+
+      <app-drop-down-menu (logout)="logout()"></app-drop-down-menu>
+    </div>
+    <button
+      mat-icon-button
+      aria-label="Go to Shopping cart page"
+      (click)="gotoCartPage()"
+      *ngIf="pageName === 'user'"
+    >
+      <mat-icon
+        class="material-icons"
+        matBadge="{{ productIncart }}"
+        matBadgeColor="accent"
+      >
         shopping_cart
       </mat-icon>
     </button>
-    </mat-toolbar-row>
+  </mat-toolbar-row>
 </mat-toolbar>
+<app-main-category-links
+  [categories]="mainCategoryLinks"
+  *ngIf="pageName !== 'admin'"
+></app-main-category-links>

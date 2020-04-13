@@ -9,7 +9,6 @@
       "@adminCore/*": ["./app/admin/core/*"],
       "@frontendCore/*": ["./app/frontend/core/*"],
       "@shared/*": ["./app/shared/*"],
-      "@core/*": ["./app/core/*"],
       "@assets/*": ["./assets/*"],
       "@services/*": ["./app/shared/services/*"]
     }

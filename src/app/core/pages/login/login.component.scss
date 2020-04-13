@@ -1,0 +1,50 @@
+.loginWrapper {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+h2 {
+  font-size: 3rem;
+  margin-bottom: 5vh;
+  color: #3cc827;
+}
+h3 {
+  justify-content: center;
+}
+h4 {
+  i {
+    font-size: 5rem;
+    color: #c5c5c5;
+  }
+}
+
+.loginHelpCon {
+  margin-bottom: 20px;
+  a {
+    display: flex;
+    align-items: center;
+    color: green;
+    font-size: 1.2rem;
+    justify-content: center;
+    text-decoration: none;
+    margin-top: 5px;
+    &:hover {
+      color: #3cc827;
+    }
+    i {
+      font-size: inherit;
+    }
+  }
+}
+.backIconCon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  color: #008000;
+}

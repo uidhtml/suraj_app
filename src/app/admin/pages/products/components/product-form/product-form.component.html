@@ -1,0 +1,100 @@
+<h3>
+  <i class="material-icons">{{ page.icon }}</i
+  >{{ page.name }} product
+</h3>
+<form
+  novalidate
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  #formGroupDirective
+  enctype="multipart/form-data"
+>
+  <label for="name" aria-label="Product Name">
+    Name
+    <input
+      type="text"
+      formControlName="name"
+      placeholder="Enter product name"
+    />
+  </label>
+  <label for="category" aria-label="Product Category">
+    Category
+    <input
+      type="text"
+      formControlName="category"
+      placeholder="Fruits, vegetable, cereals etc..."
+    />
+  </label>
+  <label for="mrp" aria-label="Cutout Price">
+    MRP
+    <input type="text" formControlName="mrp" placeholder="Original price" />
+  </label>
+  <label for="price" aria-label="Our Price">
+    Our Price
+    <input
+      type="text"
+      formControlName="price"
+      placeholder="Discounted  Price"
+    />
+  </label>
+  <label for="stock" aria-label="Stock Amount">
+    In Stock
+    <input type="text" formControlName="stock" placeholder="Amount in stock" />
+  </label>
+  <label for="unit" aria-label="Product Unit">
+    Unit
+    <select formControlName="unit">
+      <option value="">Select</option>
+      <option value="kg">Kilogram</option>
+      <option value="g">Gram</option>
+    </select>
+  </label>
+  <label for="date" aria-label="Product Unit">
+    Added date
+    <input
+      type="text"
+      formControlName="addedDate"
+      readonly
+      placeholder="Product added date"
+    />
+  </label>
+  <div class="editorWrapper">
+    <app-editor-js
+      class="editor"
+      [editorData]="form.controls.body.value"
+      (sendEditorData)="getEditorData($event)"
+    >
+    </app-editor-js>
+    <mat-error style="font-size: 12px; padding: 10px 0;" *ngIf="isBodyEmpty"
+      >Body of post is empty.</mat-error
+    >
+  </div>
+  <label for="image"
+    >Upload Image
+    <input
+      type="file"
+      (change)="getFileInputValue($event, 'shareImage')"
+      accept=".jpg,.jpeg,.gif,.png"
+    />
+    <div class="previewCon">
+      <img
+        class="preview"
+        #preview
+        [src]="
+          form.controls.image.value
+            ? '/assets/uploads/images/' + form.controls.image.value
+            : '/assets/images/default-product-image.jpg'
+        "
+      />
+    </div>
+  </label>
+  <button class="submit" *ngIf="page.name === 'add'" [disabled]="!form.valid">
+    Add
+  </button>
+  <button class="submit" *ngIf="page.name === 'edit'" [disabled]="!form.valid">
+    Update
+  </button>
+  <pre style="flex: 1; font-size: 14px"
+    >{{ form.getRawValue() | json }}{{ form.status }}</pre
+  >
+</form>

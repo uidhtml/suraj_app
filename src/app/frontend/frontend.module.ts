@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared/shared.module';
-import { CoreModule } from '@core/core.module';
+import { CoreModule } from '../core/core.module';
 import { FrontendComponent } from './frontend.component';
 import { FrontendRoutingModule } from './frontend-routing.module';
-import { CartComponent } from './pages/cart/cart.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { SharedModule } from '@shared/shared.module';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 @NgModule({
-  declarations: [FrontendComponent, CartComponent],
-  imports: [FrontendRoutingModule, SharedModule, CoreModule],
-  exports: [FrontendComponent, CartComponent]
+  declarations: [FrontendComponent, ProductsComponent, ProductDetailsComponent],
+  imports: [FrontendRoutingModule, CoreModule, SharedModule],
+  exports: [FrontendComponent],
 })
 export class FrontendModule {}

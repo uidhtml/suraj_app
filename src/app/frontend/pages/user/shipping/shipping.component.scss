@@ -1,0 +1,125 @@
+@import './../../../scss/inner-page-header';
+header {
+  a {
+    i {
+      color: green;
+    }
+  }
+}
+label {
+  width: 100%;
+  p {
+    margin-bottom: 0;
+  }
+}
+.checkboxCon {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  input {
+    width: 20px;
+    height: 20px;
+    margin: auto auto auto 10px;
+  }
+}
+.submit {
+  margin-top: 20px;
+}
+.bottomSignInLinkCon {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  a {
+    color: green;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    i {
+      font-size: inherit;
+    }
+  }
+}
+.allAddresses {
+  margin-bottom: 30px;
+  text-transform: capitalize;
+  p {
+    margin-bottom: 10px;
+  }
+  ul {
+    li {
+      position: relative;
+      border: solid 1px #eee;
+      background-color: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
+      &.active {
+        background-color: #d6fbd1;
+        border: solid 1px #a3e0a3;
+        i {
+          &.default {
+            display: block;
+          }
+        }
+      }
+      i {
+        &.default {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          z-index: 1;
+          color: green;
+          font-weight: bold;
+          display: none;
+        }
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+  h2 {
+    font-size: 1.4rem;
+    text-transform: capitalize;
+  }
+}
+.payButton {
+  background-color: #c7c7c7;
+  color: #fff;
+  display: -webkit-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 1.6rem;
+  line-height: 1;
+  text-transform: uppercase;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  font-weight: 600;
+  text-decoration: none;
+  i {
+    font-size: inherit;
+  }
+  span:first-child {
+    display: flex;
+    align-items: center;
+  }
+  &.active {
+    background-color: #ff3c3c;
+    span:last-child {
+      color: lightgreen;
+    }
+  }
+}
+:host {
+  background: #f7f7f7;
+  position: relative;
+  z-index: 3;
+  display: block;
+  min-height: 100vh;
+}

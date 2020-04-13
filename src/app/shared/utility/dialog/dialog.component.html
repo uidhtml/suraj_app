@@ -1,0 +1,14 @@
+<h1 mat-dialog-title [ngClass]="{ error: data.success == -1 }">
+  {{ data.title }}
+</h1>
+<div mat-dialog-content>
+  <p>{{ data.msg }}</p>
+  <ul *ngIf="data.success == -1" [ngClass]="{ error: data.success == -1 }">
+    <li *ngFor="let item of data.error">{{ item.msg }}</li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick(data.success)" cdkFocusInitial>
+    OK
+  </button>
+</div>

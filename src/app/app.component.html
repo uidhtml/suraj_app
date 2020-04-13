@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<div class="mainWrapper">
+  <app-header
+    *ngIf="isHeaderVisible"
+    (openSidebar)="openSidebar($event)"
+    [pageName]="pageName"
+  ></app-header>
+  <router-outlet></router-outlet>
+  <app-main-footer></app-main-footer>
+</div>
+<app-sidebar [pageName]="pageName"></app-sidebar>

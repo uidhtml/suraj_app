@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { ROUTE_URLS } from '@app/route-urls.const';
 
 @Injectable({
   providedIn: 'root'
@@ -8,21 +8,33 @@ import { ROUTE_URLS } from '@app/route-urls.const';
 export class AuthService {
   public loggedEmail: string;
   public isLoggedIn: boolean = false;
-  constructor(private readonly router: Router) {}
+  public isLoginSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  public isLoggingObservable = this.isLoginSubject.asObservable();
+  public pageName: BehaviorSubject<string> = new BehaviorSubject('user');
+  public pageNameObservable = this.pageName.asObservable();
+
+  constructor(private router: Router) {}
 
   checkLogin(): boolean {
-    this.loggedEmail = localStorage.getItem('email');
+    this.loggedEmail = localStorage.getItem('username');
     if (!this.loggedEmail) {
-      this.isLoggedIn = false;
-      this.router.navigate([ROUTE_URLS.ADMIN]);
+      this.isLoginSubject.next(false);
+      this.setLoggedInData();
       return false;
     }
-    this.isLoggedIn = true;
+    this.isLoginSubject.next(true);
+    this.setLoggedInData();
     return true;
   }
   logout(): void {
     localStorage.clear();
-    this.isLoggedIn = false;
-    this.router.navigate([ROUTE_URLS.ADMIN]);
+    this.isLoginSubject.next(false);
+    this.setLoggedInData();
+  }
+
+  setLoggedInData() {
+    this.isLoggingObservable.subscribe(data => {
+      this.isLoggedIn = data;
+    });
   }
 }

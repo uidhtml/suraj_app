@@ -1,0 +1,34 @@
+@import './../../scss/inner-page-header';
+header {
+  .title {
+    flex: 1 auto;
+    display: flex;
+    align-items: center;
+  }
+}
+h2.heading {
+  margin-bottom: 0;
+  background-color: lightgreen;
+  color: #333;
+  padding: 10px 20px;
+  text-align: center;
+}
+.imgCol {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.productDetailsCon,
+.imgCol {
+  background-color: #fff;
+}
+.productDetailsCon {
+  padding: 20px;
+}
+:host {
+  background: #f7f7f7;
+  position: relative;
+  z-index: 3;
+  display: block;
+}

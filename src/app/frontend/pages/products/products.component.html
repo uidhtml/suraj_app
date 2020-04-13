@@ -1,0 +1,12 @@
+<app-hero-banner></app-hero-banner>
+<div class="outerWrapper">
+  <app-category-list [categories]="categories"></app-category-list>
+  <ng-container>
+    <div class="listWrapper" *ngFor="let products of productsArray | keyvalue">
+      <app-product-card
+        class="cardWrapper"
+        [products]="products.value"
+      ></app-product-card>
+    </div>
+  </ng-container>
+</div>

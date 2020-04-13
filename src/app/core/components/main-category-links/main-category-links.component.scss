@@ -1,0 +1,39 @@
+.category {
+  display: flex;
+  justify-content: space-around;
+  background: #d6fbd1;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  li {
+    margin: 0 10px;
+    &.active {
+      a {
+        color: #114e08;
+        position: relative;
+        &:after {
+          position: absolute;
+          content: '';
+          width: 100%;
+          height: 3px;
+          bottom: 0;
+          left: 0;
+          background: #3cc827;
+        }
+      }
+    }
+    a {
+      border-radius: 3px;
+      font-weight: 400;
+      padding: 13px 0;
+      display: block;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      color: #a2bb9f;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

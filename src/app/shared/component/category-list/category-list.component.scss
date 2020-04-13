@@ -1,0 +1,28 @@
+h2 {
+  margin-bottom: 10px;
+}
+.category {
+  display: flex;
+  width: 100%;
+  li {
+    margin-right: 5px;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  a {
+    color: #fff;
+
+    background: #aabd0b;
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+
+    border-radius: 3px;
+    &.active {
+      color: #aabd0b;
+      background: #fff;
+      border: solid 1px currentColor;
+    }
+  }
+}

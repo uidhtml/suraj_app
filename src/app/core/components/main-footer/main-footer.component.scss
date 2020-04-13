@@ -1,0 +1,19 @@
+:host {
+  position: absolute;
+  width: 100%;
+  bottom: -30px;
+  left: 0;
+  z-index: 2;
+  font-size: 1.1rem;
+  color: #c5c5c5;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  footer {
+    font-size: 1.1rem;
+    color: inherit;
+    text-align: center;
+    padding: 10px;
+  }
+}

@@ -8,13 +8,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ProductCounterComponent {
   @Input() product;
   @Output() changeProduct = new EventEmitter();
-
-  public couterStatus: boolean = false;
+  @Output() addProductToCart = new EventEmitter();
 
   showProductCounter() {
     this.product.quantity++;
-    this.couterStatus = !this.couterStatus;
     this.emitProductQuantity();
+    this.addProductToCart.emit(this.product);
   }
   add() {
     this.product.quantity++;
@@ -24,7 +23,8 @@ export class ProductCounterComponent {
     this.product.quantity--;
     this.emitProductQuantity();
     if (this.product.quantity === 0) {
-      this.couterStatus = !this.couterStatus;
+      this.product.addedInCart = false;
+      this.addProductToCart.emit(this.product);
     }
   }
   emitProductQuantity() {

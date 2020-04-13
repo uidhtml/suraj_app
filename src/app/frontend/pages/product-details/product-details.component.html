@@ -1,0 +1,15 @@
+<div class="fullPageWrapper">
+  <header>
+    <i class="material-icons" (click)="goBack()">arrow_back</i>
+    <div class="title">Product details<span class="separator"></span></div>
+  </header>
+  <h2 class="heading">{{ productName }}</h2>
+  <div class="imgCol">
+    <img src="./assets/uploads/images/{{ productImage }}" />
+  </div>
+  <div
+    class="productDetailsCon"
+    *ngIf="EditorJsJson"
+    [innerHTML]="exportJsonToHTML()"
+  ></div>
+</div>

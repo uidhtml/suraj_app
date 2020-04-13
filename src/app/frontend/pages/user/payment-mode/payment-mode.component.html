@@ -1,0 +1,22 @@
+<app-loader *ngIf="isLoaderVisible"></app-loader>
+<div class="fullPageWrapper">
+  <header>
+    <i class="material-icons" (click)="goBack()">arrow_back</i>
+    <div class="title">Payment</div>
+    <span class="separator"></span>
+    <a routerLink="/">
+      <i class="material-icons">home</i>
+    </a>
+  </header>
+  <h2>Choose your payment method:</h2>
+  <ul class="paymentOptionCon">
+    <li (click)="selectPaymentMode($event, 'online')">
+      <i class="material-icons default">done</i>
+      <i class="material-icons">account_balance_wallet</i>Online payment
+    </li>
+    <li (click)="selectPaymentMode($event, 'COD')">
+      <i class="material-icons default">done</i>
+      <span>&#8377;</span>Cash on Delivary
+    </li>
+  </ul>
+</div>

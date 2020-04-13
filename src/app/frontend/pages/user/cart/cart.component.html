@@ -1,0 +1,70 @@
+<div class="fullPageWrapper">
+  <header>
+    <i class="material-icons" (click)="goBack()">arrow_back</i>
+    <div class="title">
+      My Cart ({{ productIncart }})<span class="separator"></span
+      ><span>Pincode: 110019</span>
+    </div>
+  </header>
+  <div class="subTotal">
+    <ul>
+      <li>
+        <span class="col leftCol">M.R.P.</span
+        ><span class="col rightCol">{{
+          totalAmount | currency: '&#8377; '
+        }}</span>
+      </li>
+      <li>
+        <span class="col leftCol">Delivary charges</span
+        ><span class="col rightCol">FREE</span>
+      </li>
+    </ul>
+  </div>
+  <ng-container *ngIf="cartProduct.length">
+    <div class="itemList" *ngFor="let product of cartProduct | keyvalue">
+      <ng-container *ngFor="let items of product.value | keyvalue">
+        <h2>{{ items.key }}</h2>
+        <ul>
+          <li *ngFor="let item of items.value">
+            <div class="itemContainer">
+              <div class="col leftCol">
+                <div class="imgCol">
+                  <img src="/assets//uploads/images/{{ item.image }}" alt="" />
+                </div>
+                <div class="details">
+                  <h3 class="name">{{ item.name | titlecase }}</h3>
+                  <p class="price">
+                    {{ item.price | currency: '&#8377; ' }}/kg
+                  </p>
+                  <app-product-counter
+                    (changeProduct)="productStatus($event)"
+                    [product]="item"
+                  >
+                  </app-product-counter>
+                </div>
+              </div>
+              <div class="col rightCol">
+                =
+                <span>{{
+                  item.quantity * item.price | currency: '&#8377; '
+                }}</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </ng-container>
+    </div>
+  </ng-container>
+  <p class="cartInfo" *ngIf="!cartProduct.length">
+    <i class="material-icons"> shopping_cart </i>🤷‍♀️There is no item in the cart.
+  </p>
+</div>
+<a
+  class="payButton"
+  (click)="proceed()"
+  *ngIf="totalAmount > 0"
+  [class.active]="totalAmount > 0"
+>
+  <span>Proceed</span>
+  <span>{{ totalAmount | currency: '&#8377; ' }}</span>
+</a>

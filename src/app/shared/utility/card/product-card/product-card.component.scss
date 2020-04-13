@@ -1,92 +1,137 @@
+h2 {
+  margin: 20px 0 10px;
+  font-weight: 600;
+  color: #333;
+}
 .cardWrapper {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 3rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .card {
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    padding: 30px 20px 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 20px;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 0 6px rgba(128, 128, 128, 0.1);
+  border-radius: 5px;
+  &.moreItems {
+    background: #578b4f;
     align-items: center;
-    position: relative;
-    box-shadow: 0 0 6px rgba(128, 128, 128, 0.1);
-    border-radius: 5px;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.4rem;
+    box-shadow: none;
+    text-transform: capitalize;
+    text-decoration: none;
+  }
+  .imgCol {
+    height: 120px;
+    background: #fff;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     img {
-        display: block;
-        background: #f7f6f6;
-        margin-bottom: 12px;
-        width: 100%;
-        max-width: 120px;
+      display: block;
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
     }
-    h2 {
-        color: #333;
-        font-size: 2rem;
-        line-height: 2rem;
-        text-align: center;
-        margin-bottom: 10px;
-        font-weight: 400;
+  }
+  h2 {
+    color: #333;
+    font-size: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-weight: 400;
+  }
+  .priceCon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    span {
+      margin: 2px 5px;
+      color: #deb887;
     }
-    .priceCon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        span {
-            margin: 2px 5px;
-        }
+  }
+  .cut-out-price {
+    color: #aaa;
+    position: relative;
+    font-size: 1.3rem;
+    font-weight: 300;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      background-color: currentColor;
+      height: 1px;
+      left: 0;
+      top: 50%;
     }
-    .cut-out-price {
-        color: #aaa;
-        position: relative;
-        font-size: 1.5rem;
-        font-weight: 300;
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            background-color: currentColor;
-            height: 1px;
-            left: 0;
-            top: 50%;
-        }
+  }
+  .price {
+    color: #31305f;
+    font-size: 1.7rem;
+    font-weight: bold;
+  }
+  .foodType {
+    padding: 2px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: solid 1px currentColor;
+    .dot {
+      width: 8px;
+      height: 8px;
+      display: block;
+      border-radius: 100%;
+      background-color: currentColor;
     }
-    .price {
-        color: #31305f;
-        font-size: 1.7rem;
-        font-weight: bold;
+    &.veg {
+      color: #00c500;
     }
-    .foodType {
-        padding: 2px;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        border: solid 1px currentColor;
-        .dot {
-            width: 8px;
-            height: 8px;
-            display: block;
-            border-radius: 100%;
-            background-color: currentColor;
-        }
-        &.veg {
-            color: #00c500;
-        }
-        &.nonVeg {
-            color: red;
-        }
+    &.nonVeg {
+      color: red;
     }
-    .inStock {
-        font-size: 1.4rem;
-        color: #989898;
-        line-height: 1.2rem;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-weight: 300;
-        span {
-            font-weight: 600;
-        }
+  }
+  .inStock {
+    font-size: 1.2rem;
+    color: #989898;
+    line-height: 1.2rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: 300;
+    span {
+      font-weight: 600;
     }
+  }
+}
+app-product-counter {
+  margin: 20px 0 0;
+}
+
+:host ::ng-deep {
+  .addProductButton {
+    height: 30px;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0 20px;
+  }
+  .counter {
+    button {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }

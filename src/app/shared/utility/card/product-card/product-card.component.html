@@ -1,17 +1,42 @@
-<div class="cardWrapper">
-    <div class="card" *ngFor="let product of products">
-        <span class="foodType veg"><span class="dot"></span></span>
-        <img src="./../../../../../assets/images/apple.jpg" />
-        <span class="inStock">In Stock:
-      <span>{{ product.totalQuantity }}{{ product.unit }}</span></span>
-        <h2>{{ product.name | titlecase }}</h2>
-        <div class="priceCon">
-            <span class="cut-out-price">{{ product.cutoutPrice | currency: '&#8377;' }}/{{ product.unit }}
-      </span>
-            <span class="price">{{ product.price | currency: '&#8377;' }}/{{ product.unit }}
-      </span>
-        </div>
-        <app-product-counter (changeProduct)="productStatus($event)" [product]="product">
-        </app-product-counter>
+<ng-container *ngFor="let category of categories">
+  <h2>{{ category | titlecase }}</h2>
+  <div class="cardWrapper">
+    <div
+      (click)="productDeatails($event, product)"
+      class="card"
+      *ngFor="let product of products[category] | slice: 0:sliceProduct"
+    >
+      <span class="foodType veg"><span class="dot"></span></span>
+      <div class="imgCol">
+        <img
+          alt="{{ product.alt }}"
+          src="/assets/uploads/images/{{ product.image }}"
+        />
+      </div>
+      <span class="inStock"
+        >In Stock: <span>{{ product.stock }}{{ product.unit }}</span></span
+      >
+      <h2>{{ product.name | titlecase }}</h2>
+      <div class="priceCon">
+        <span class="cut-out-price"
+          >{{ product.mrp | currency: '&#8377;' }}/{{ product.unit }}
+        </span>
+        <span class="price"
+          >{{ product.price | currency: '&#8377;' }}/{{ product.unit }}
+        </span>
+      </div>
+      <app-product-counter
+        (changeProduct)="addProduct($event)"
+        [product]="product"
+      >
+      </app-product-counter>
     </div>
-</div>
+    <a
+      routerLink="/products/{{ category }}"
+      class="card moreItems"
+      *ngIf="categories.length > 1"
+    >
+      <i class="material-icons">arrow_forward</i>All {{ category }}
+    </a>
+  </div>
+</ng-container>

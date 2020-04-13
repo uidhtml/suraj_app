@@ -1,0 +1,53 @@
+@import './../../../scss/inner-page-header';
+header {
+  a {
+    i {
+      color: green;
+    }
+  }
+}
+.paymentOptionCon {
+  li {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px #eee;
+    background: #fff;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+    position: relative;
+    &.active {
+      background-color: lightgreen;
+      border: solid 1px #a3e0a3;
+      font-weight: 600;
+      i {
+        &.default {
+          display: block;
+        }
+      }
+    }
+    span {
+      margin-right: 5px;
+      font-weight: bold;
+    }
+    i {
+      &.default {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 1;
+        color: green;
+        font-weight: bold;
+        display: none;
+      }
+    }
+  }
+}
+:host {
+  background: #f7f7f7;
+  position: relative;
+  z-index: 3;
+  display: block;
+  min-height: 100vh;
+}

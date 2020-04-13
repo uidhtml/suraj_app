@@ -1,0 +1,145 @@
+@import './../../../scss/inner-page-header';
+header {
+  .title {
+    flex: 1 auto;
+    display: flex;
+    align-items: center;
+  }
+}
+.col {
+  display: flex;
+  align-items: center;
+  flex-basis: 100%;
+  border: solid 1px #f1e2ce;
+  border-radius: 5px;
+  overflow: hidden;
+  .details {
+    background-color: #faebd7;
+    padding: 10px 13px;
+    flex: 1 auto;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
+.date {
+  font-size: 1.2rem;
+  margin: 0 auto 5px;
+  padding: 5px 0;
+  display: block;
+  max-width: 100px;
+  align-self: center;
+  font-weight: 600;
+  text-align: center;
+  background: #f9bd2c;
+  border-radius: 3px;
+  color: #fff;
+}
+.itemListCon {
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .itemList {
+    margin-bottom: 10px;
+    border-bottom: dashed 1px #eee;
+    padding-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+    li {
+      a {
+        position: relative;
+        display: flex;
+        text-decoration: none;
+        color: transparent;
+        i {
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          transform: translateY(-50%);
+          color: #000;
+          z-index: 1;
+        }
+      }
+    }
+    h2,
+    h3 {
+      font-weight: 400;
+    }
+    h2 {
+      font-size: 1.3rem;
+      display: block;
+      margin-bottom: 10px;
+      color: #f9b02c;
+    }
+    h3 {
+      color: #333;
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+      font-weight: 600;
+      display: flex;
+      .quantity {
+        font-size: 1.2rem;
+      }
+    }
+    .imgCol {
+      max-width: 92px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      img {
+        max-height: 92px;
+        max-width: 100%;
+      }
+    }
+  }
+  .address {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0;
+      padding: 10px 0 0 0;
+    }
+    span {
+      padding: 2px 0 2px;
+      display: block;
+      font-weight: 600;
+      color: #777;
+      font-size: 1.3rem;
+    }
+  }
+}
+.info {
+  position: fixed;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  i {
+    display: block;
+    font-size: 8rem;
+    color: red;
+  }
+}
+:host {
+  background: #f7f7f7;
+  position: relative;
+  z-index: 3;
+  display: block;
+}

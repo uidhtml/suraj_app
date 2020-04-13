@@ -1,0 +1,33 @@
+header {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: flex-start;
+  border-bottom: solid 1px #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  i {
+    margin-right: 10px;
+  }
+  .close {
+    margin-right: 30px;
+    font-size: 1rem;
+  }
+  .title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    span {
+      display: block;
+      font-size: 1.3rem;
+      margin-top: 2px;
+      color: #777;
+    }
+  }
+  .separator {
+    flex: 1 auto;
+  }
+}
+h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}

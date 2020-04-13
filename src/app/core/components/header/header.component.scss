@@ -1,22 +1,62 @@
 mat-toolbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 5px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-    z-index: 1;
+  padding: 5px;
+  background: #3cc827 !important;
+  color: #fff;
 }
 
 .icon {
-    padding: 0 14px;
+  padding: 0 14px;
 }
 
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+.userActionCon {
+  font-size: 1.2rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: inherit;
+    padding: 0 8px;
+  }
+  .pipe {
+    padding: 0 0 0 10px;
+  }
 }
 
 .logoWrapper {
+  display: flex;
+  align-items: center;
+}
+.loggerInfo {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 0 2px 10px;
+  border-radius: 50px;
+  figure {
     display: flex;
     align-items: center;
+    font-size: 1.4rem;
+    .imgCol {
+      margin-right: 5px;
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: self;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }

@@ -11,7 +11,7 @@ import {
   Router
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '@services/auth.service';
+import { AuthService } from './../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.authService.checkLogin();
+    this.authService.checkLogin();
+    return this.authService.isLoggedIn;
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,

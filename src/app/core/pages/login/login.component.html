@@ -1,0 +1,47 @@
+<div class="backIconCon" (click)="goBack()">
+  <i class="material-icons backIcon">arrow_back</i>Back
+</div>
+<div class="loginWrapper">
+  <header>
+    <h5>Welcome to</h5>
+    <h2>Example.com</h2>
+    <h4><i class="material-icons">person_pin</i>{{ pageName }}</h4>
+    <h3>Login</h3>
+  </header>
+  <form [formGroup]="form" (ngSubmit)="submit($event)">
+    <label for="username" aria-label="username">
+      <input
+        type="text"
+        name="username"
+        formControlName="username"
+        placeholder="Mobile"
+      />
+    </label>
+    <label for="password" aria-label="Password">
+      <input
+        type="password"
+        name="password"
+        formControlName="password"
+        placeholder="Password"
+      />
+    </label>
+    <div class="loginHelpCon">
+      <a routerLink="/{{ pageName }}/forgot-password"
+        ><i class="material-icons">lock_open</i>Forgot Password</a
+      >
+    </div>
+    <button class="submit" [disabled]="!form.valid">Login</button>
+  </form>
+  <div class="loginHelpCon" *ngIf="pageName === 'user'">
+    <p>
+      Dont't have an account, no worry!<a routerLink="/user/signup"
+        ><i class="material-icons">power_settings_new</i>Create account</a
+      >
+    </p>
+  </div>
+
+  <pre>
+  {{ form.value | json }}
+</pre
+  >
+</div>

@@ -1,0 +1,20 @@
+<div class="sidebarWrapper" [ngClass]="{ slideOut: !isOpenSidebar }">
+  <header>
+    <i class="material-icons">person</i><span class="title">Gautam Kumar</span>
+  </header>
+  <div class="block" *ngFor="let item of links">
+    <ul (click)="closeSidebar($event)">
+      <li>
+        <a routerLink="/{{ pageName }}/{{ item.link }}"
+          ><i class="material-icons">{{ item.icon }}</i
+          >{{ item.title }}</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<div
+  class="overlay"
+  (click)="toggleSidebar()"
+  [ngClass]="{ fadeOut: !isOpenSidebar }"
+></div>

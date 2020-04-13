@@ -1,0 +1,10 @@
+<h3><mat-icon>list</mat-icon>All Products</h3>
+<ng-container *ngIf="isEmpty === true; else dataTable">
+  <p>No records found.</p>
+</ng-container>
+<ng-template #dataTable>
+  <app-data-table
+    [DATA_TABLE_HEADER]="header"
+    [DATA_TABLE_ROWS]="rows"
+  ></app-data-table>
+</ng-template>

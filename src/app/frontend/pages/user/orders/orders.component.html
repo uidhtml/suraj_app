@@ -1,0 +1,55 @@
+<div class="fullPageWrapper">
+  <header>
+    <i class="material-icons" (click)="productPage()">arrow_back</i>
+    <div class="title">
+      My Orders ({{ totalPurchaseDateWise }})<span class="separator"></span
+      ><span>Pincode: 110019</span>
+    </div>
+  </header>
+  <h2 *ngIf="products.length">Your latest order has been placed</h2>
+  <ng-container *ngIf="products && products.length">
+    <ng-container *ngFor="let product of products | keyvalue">
+      <div class="itemListCon">
+        <ng-container *ngFor="let item of product.value | keyvalue">
+          <span class="date">{{ item.key | date: 'mediumDate' }}</span>
+          <div class="itemList" *ngFor="let order of item.value">
+            <ul>
+              <li>
+                <div class="col">
+                  <div class="imgCol">
+                    <img
+                      src="./assets/uploads/images/{{ order.image }}"
+                      alt=""
+                    />
+                  </div>
+                  <div class="details">
+                    <h2>{{ order.category | titlecase }}</h2>
+                    <h3 class="name">
+                      {{ order.name | titlecase }}&nbsp;
+                      <span class="quantity">
+                        ({{ order.quantity }}{{ order.unit }})
+                      </span>
+                    </h3>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="address">
+            <h3>Product {{ deliveryStatus }} delivered to below address</h3>
+            <span>{{ item.value[0].person_name }}</span>
+            {{ item.value[0].address }}, {{ item.value[0].city }}-{{
+              item.value[0].pincode
+            }}, {{ item.value[0].state }},
+            {{ item.value[0].country }}
+            <span>Order Ref Code: {{ item.value[0].order_ref_code }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+  <p class="cartInfo" *ngIf="!products.length">
+    <i class="material-icons"> history </i>😒 You have no orders, why don't you
+    buy something.
+  </p>
+</div>

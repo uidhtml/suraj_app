@@ -1,0 +1,204 @@
+<app-loader *ngIf="isLoaderVisible"></app-loader>
+<div class="fullPageWrapper">
+  <header>
+    <i class="material-icons" (click)="goBack()">arrow_back</i>
+    <div class="title">Create Example Account</div>
+    <span class="separator"></span>
+    <a routerLink="/">
+      <i class="material-icons">home</i>
+    </a>
+  </header>
+  <form novalidate [formGroup]="form" (ngSubmit)="submit($event)">
+    <!-- <label for="country" aria-label="Country">Unit
+    <select formControlName="country">
+      <option value="">Select</option>
+      <option value="IND">India</option>
+    </select>
+  </label>
+  <label for="fullName" aria-label="Full name">Full Name
+    <input type="text" formControlName="fullName" placeholder="Enter full name">
+  </label>
+  <label for="mobile" aria-label="Mobile Number">Mobile Number
+    <input type="text" name="mobile" placeholder="10-digit mobile number without prefixes">
+  </label>
+  <label for="email" aria-label="Our Price">Email Id
+    <input type="text" formControlName="email" placeholder="Enter email id">
+  </label>
+  <label for="streetAddress" aria-label="Street Address">Street Address
+    <input type="text" formControlName="streetAddress" placeholder="Flat / House No. / Floor / Building">
+  </label>
+  <label for="landmark" aria-label="Landmark">In Stock
+    <input type="text" formControlName="landmark" placeholder="E.g. Near AIIMS Flyover, Behind Regal Cinema, etc.">
+  </label>
+  <label for="city" aria-label="city">In Stock
+    <input type="text" formControlName="city" placeholder="">
+  </label>
+  
+  <label for="state" aria-label="State">Unit
+    <select formControlName="state">
+      <option value="">Select</option>
+    </select>
+  </label>
+  <label for="city" aria-label="City">Unit
+    <select formControlName="city">
+      <option value="">Select</option>
+    </select>
+  </label>  
+  <button class="submit">Add</button> -->
+    <label for="firstName" aria-label="Your First Name"
+      ><span class="required">First Name</span>
+      <input
+        type="text"
+        [class.error]="firstName.touched && firstName.invalid"
+        formControlName="firstName"
+      />
+      <span
+        class="error"
+        *ngIf="firstName.errors?.required && firstName.touched"
+        ><i class="material-icons">info</i>Full Name should not be left
+        blank.</span
+      >
+      <span class="error" *ngIf="firstName.errors?.minlength && firstName.dirty"
+        ><i class="material-icons">info</i>Full Name should contain 4
+        charecter.</span
+      >
+    </label>
+    <label for="middleName" aria-label="Your Full Name"
+      >Middle Name
+      <input type="text" formControlName="middleName" />
+    </label>
+    <label for="lastName" aria-label="Your Full Name"
+      ><span class="required">Last Name</span>
+      <input
+        type="text"
+        [class.error]="lastName.touched && lastName.invalid"
+        formControlName="lastName"
+      />
+      <span class="error" *ngIf="lastName.errors?.required && lastName.touched"
+        ><i class="material-icons">info</i>Last Name should not be left
+        blank.</span
+      >
+    </label>
+    <label for="mobile" aria-label="Your moibile numbere"
+      ><span class="required">Mobile number</span>
+      <input
+        type="text"
+        [class.error]="mobile.touched && mobile.invalid"
+        formControlName="mobile"
+        (keypress)="numberOnly($event)"
+      />
+      <span class="error" *ngIf="mobile.errors?.required && mobile.touched"
+        ><i class="material-icons">info</i>Mobile number should not be left
+        blank.</span
+      >
+      <span class="error" *ngIf="mobile.errors?.pattern && mobile.dirty"
+        ><i class="material-icons">info</i>Only Numbers allowed.</span
+      >
+      <span class="error" *ngIf="mobile.errors?.minlength && mobile.dirty"
+        ><i class="material-icons">info</i>Mobile number should contain 10
+        digits.</span
+      >
+      <span class="error" *ngIf="mobile.errors?.maxlength && mobile.dirty"
+        ><i class="material-icons">info</i>Only 10 digits allowed.</span
+      >
+    </label>
+    <label for="email" aria-label="Your email"
+      >Email
+      <input
+        type="text"
+        [class.error]="email.touched && email.invalid"
+        formControlName="email"
+      />
+      <span class="error" *ngIf="email.errors?.required && email.touched"
+        ><i class="material-icons">info</i>Email id should not be left
+        blank.</span
+      >
+      <span class="error" *ngIf="email.errors?.email && email.dirty"
+        ><i class="material-icons">info</i>Invalid email id.</span
+      >
+    </label>
+    <label for="password" aria-label="Create password"
+      ><span class="required">Password</span>
+      <input
+        type="text"
+        [class.error]="password.touched && password.invalid"
+        formControlName="password"
+        placeholder="At least 6 characters"
+      />
+      <p class="info">
+        <i class="material-icons">info</i>Passwords must be at least 6
+        characters.
+      </p>
+      <p>
+        <span
+          class="error"
+          *ngIf="password.errors?.required && password.touched"
+          ><i class="material-icons">info</i>You left to fill password.</span
+        >
+        <span class="error" *ngIf="password.errors?.pattern && password.dirty"
+          ><i class="material-icons">info</i>Password should contain one
+          uppercase, one number and one special charecter.</span
+        >
+        <span class="error" *ngIf="password.errors?.minlength && password.dirty"
+          ><i class="material-icons">info</i>Password should contain 6
+          charecter.</span
+        >
+        <span class="error" *ngIf="password.errors?.maxlength && password.dirty"
+          ><i class="material-icons">info</i>Max 15 charecter allowed.</span
+        >
+      </p></label
+    >
+
+    <label for="confPassword" aria-label="Create confPassword"
+      ><span class="required">Confirm Password</span>
+      <input
+        type="text"
+        [class.error]="confPassword.touched && confPassword.invalid"
+        formControlName="confPassword"
+        placeholder="At least 6 characters"
+      />
+      <span
+        class="error"
+        *ngIf="confPassword.errors?.required && confPassword.touched"
+        ><i class="material-icons">info</i>You left to fill Confirm
+        Password.</span
+      >
+      <span class="error" *ngIf="confPassword.errors?.misMatch"
+        ><i class="material-icons">info</i>Password do not match.</span
+      >
+    </label>
+    <label for="profile_pic" aria-label="Upload profile pic"
+      >Profile pic
+      <input
+        type="file"
+        (change)="getFileInputValue($event, 'shareImage')"
+        accept=".jpg,.jpeg,.gif,.png"
+      />
+      <div class="previewCon">
+        <img
+          class="preview"
+          #preview
+          [src]="
+            form.controls.image.value
+              ? '/assets/uploads/profile_pic/' + form.controls.image.value
+              : '/assets/images/default-profile-pic.jpg'
+          "
+        />
+      </div>
+    </label>
+    <p>
+      We will send you a text to verify your phone. Message and Data rates may
+      apply.
+    </p>
+    <button class="submit" [disabled]="!form.valid">Submit</button>
+  </form>
+  <pre>
+    {{ form.getRawValue() | json }}
+  </pre>
+  {{ form.status }}
+  <div class="bottomSignInLinkCon">
+    <a routerLink="/user/login"
+      ><i class="material-icons">power_settings_new</i>Sign In</a
+    >
+  </div>
+</div>

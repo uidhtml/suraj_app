@@ -1,0 +1,80 @@
+<app-loader *ngIf="isLoaderVisible"></app-loader>
+<div class="fullPageWrapper">
+  <header>
+    <i class="material-icons" (click)="goBack()">arrow_back</i>
+    <div class="title">Shipping</div>
+    <span class="separator"></span>
+    <a routerLink="/">
+      <i class="material-icons">home</i>
+    </a>
+  </header>
+  <h2>Previously added address</h2>
+  <div class="allAddresses">
+    <p>Choose address</p>
+    <ul>
+      <li
+        *ngFor="let address of addressArray"
+        (click)="selectAddress($event, address.id)"
+        [ngClass]="{ active: address.defaultAddress === 1 }"
+      >
+        <i class="material-icons default">done</i>
+        <h2>Contact person: {{ address.name }}</h2>
+        <p>Address: {{ address.address }},</p>
+        <p>Landmark: {{ address.landmark }}</p>
+        <p>
+          {{ address.city }}-{{ address.pincode }}, {{ address.state }},
+          {{ address.country }}
+        </p>
+      </li>
+    </ul>
+  </div>
+  <h2>Add Address:</h2>
+  <form novalidate [formGroup]="form" (ngSubmit)="submit($event)">
+    <label>
+      Name of person:
+      <input formControlName="name" />
+    </label>
+    <label>
+      country:
+      <input formControlName="country" readonly />
+    </label>
+    <label>
+      State:
+      <input formControlName="state" readonly />
+    </label>
+    <label>
+      City:
+      <input formControlName="city" readonly />
+    </label>
+    <label>
+      Pincode:
+      <select formControlName="pincode">
+        <option value="110019">110019</option>
+        <option value="110020">110020</option>
+        <option value="110030">110030</option>
+      </select>
+    </label>
+    <label>
+      Address:
+      <input formControlName="address" />
+    </label>
+    <label>
+      Landmark:
+      <input formControlName="landmark" />
+    </label>
+    <label class="checkboxCon">
+      Default Address:
+      <input type="checkbox" formControlName="default" />
+    </label>
+    <button class="submit" [disabled]="!form.valid">Add</button>
+  </form>
+</div>
+<a
+  class="payButton"
+  (click)="proceed()"
+  *ngIf="isAddressSelected && totalAmount > 0"
+  [class.active]="isAddressSelected"
+>
+  <span><i class="material-icons">payment</i>Pay Now</span>
+  <span>{{ totalAmount | currency: '&#8377; ' }}</span>
+</a>
