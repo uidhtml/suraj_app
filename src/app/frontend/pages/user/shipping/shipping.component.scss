@@ -62,12 +62,13 @@ label {
           }
         }
       }
+      h2 {
+        display: flex;
+        align-items: center;
+      }
       i {
+        margin-left: 10px;
         &.default {
-          position: absolute;
-          right: 10px;
-          top: 10px;
-          z-index: 1;
           color: green;
           font-weight: bold;
           display: none;
@@ -78,10 +79,34 @@ label {
     p {
       margin-bottom: 0;
     }
+    .defaultAddress,
+    .deleteAddress {
+      position: absolute;
+    }
+    .defaultAddress {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background: #ccc;
+      padding: 5px 10px;
+      display: block;
+      font-size: 0.875rem;
+      color: #fff;
+      border-radius: 3px;
+      &.active {
+        background: green;
+      }
+    }
+    .deleteAddress {
+      right: 5px;
+      top: 5px;
+      color: red;
+    }
   }
   h2 {
     font-size: 1.4rem;
     text-transform: capitalize;
+    margin-bottom: 0;
   }
 }
 .payButton {

@@ -3,7 +3,7 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  FormGroupDirective
+  FormGroupDirective,
 } from '@angular/forms';
 import { HttpService } from '@shared/services/http.service';
 import { ApiHostService } from '@shared/services/api-host.service';
@@ -15,7 +15,7 @@ import { ROUTE_URLS } from '@app/route-urls-const';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.scss']
+  styleUrls: ['./product-form.component.scss'],
 })
 export class ProductFormComponent implements OnInit {
   public isBodyEmpty: boolean = false;
@@ -63,7 +63,7 @@ export class ProductFormComponent implements OnInit {
       addedDate: [new Date(), [Validators.required]],
       body: [null, [Validators.required]],
       image: [null, [Validators.required]],
-      status: ['0']
+      status: ['0'],
     });
   }
 
@@ -84,7 +84,6 @@ export class ProductFormComponent implements OnInit {
     this.httpService
       .getHttp(this.apiHostService.concatUrl(`/single-product.php?id=${id}`))
       .subscribe((data: { success: number; results: {}[] }) => {
-        console.log(data);
         this.form.patchValue(data.results[0]);
       });
   }
@@ -185,7 +184,7 @@ export class ProductFormComponent implements OnInit {
     const reader = new FileReader();
     let imgURL;
     reader.readAsDataURL(file);
-    reader.onload = event => {
+    reader.onload = (event) => {
       imgURL = reader.result;
       this.preview.nativeElement.src = imgURL;
     };
@@ -196,13 +195,13 @@ export class ProductFormComponent implements OnInit {
   openDialog(success: number, title: string, msg: string, error?: {}[]): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: 'auto',
-      data: { success, title, msg, error }
+      data: { success, title, msg, error },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         this.router.navigate([
-          `/${ROUTE_URLS.ADMIN}/${ROUTE_URLS.PRODUCTS}/${ROUTE_URLS.ALL}`
+          `/${ROUTE_URLS.ADMIN}/${ROUTE_URLS.PRODUCTS}/${ROUTE_URLS.ALL}`,
         ]);
       }
     });

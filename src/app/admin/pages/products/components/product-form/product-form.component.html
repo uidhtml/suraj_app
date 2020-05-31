@@ -94,7 +94,4 @@
   <button class="submit" *ngIf="page.name === 'edit'" [disabled]="!form.valid">
     Update
   </button>
-  <pre style="flex: 1; font-size: 14px"
-    >{{ form.getRawValue() | json }}{{ form.status }}</pre
-  >
 </form>

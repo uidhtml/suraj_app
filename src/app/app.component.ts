@@ -8,7 +8,7 @@ import { AuthService } from '@shared/services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   public isHeaderVisible: boolean = false;
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   getNavigationEvents() {
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((res: NavigationEnd) => {
         res.url.indexOf('admin') === 1
           ? (this.pageName = 'admin')
@@ -34,9 +34,6 @@ export class AppComponent implements OnInit {
           ? (this.isHeaderVisible = false)
           : (this.isHeaderVisible = true);
         this.authService.pageName.next(this.pageName);
-        // console.log(this.router.routerState.root.snapshot.firstChild); // active component
-        // console.log(this.router.routerState.root.snapshot.data); // route data
-        // console.log(this.router.routerState.root.snapshot.routeConfig); // routes list
       });
   }
 

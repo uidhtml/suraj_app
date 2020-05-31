@@ -15,7 +15,7 @@ class uploadFile {
 	}
 
     public function upload($files, $dir){
-        $this->target_dir = './../suraj-latest-backup/src/assets/uploads/'.$dir;
+        $this->target_dir = './../assets/uploads/'.$dir;
         if(file_exists($this->target_dir)){
             // Set new file name, which will be uploaded
             $tempName = explode('.',$files['name']);

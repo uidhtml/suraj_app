@@ -17,6 +17,8 @@ html {
 body {
   font-family: Open Sans, Helvetica, Arial;
   min-height: 100vh;
+  max-height: 100vh;
+  overflow: auto;
   background-size: cover;
   position: relative;
   background-color: #fbfffa;
@@ -173,7 +175,8 @@ legend {
   &:focus {
     outline: none;
   }
-  &[readonly] {
+  &[readonly],
+  &[disabled] {
     background-color: #eee;
     border-color: #d0d0d0;
     color: #8e8e8e;

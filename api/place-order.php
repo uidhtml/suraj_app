@@ -1,5 +1,5 @@
 <?php
-    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Origin: http://haxxix.com');
     header('Access-Control-Allow-Methods: GET, POST');
     header('Access-Control-Allow-Headers: X-Requested-With, content-type, access-control-allow-origin , authorization, access-control-allow-methods, access-control-allow-headers');
     header('Content-Type: application/json; charset=utf-8');
@@ -16,7 +16,7 @@
 			$quantity = $value->quantity;
 			$unit = $value->unit;
 			$date = $value->date;
-			$order_ref_code = '123';
+			$order_ref_code = random_strings(8);
 			$status = $value->status;
 			$stmt = $con->prepare('INSERT orders (user_id, product_id,address_id,quantity,unit,date,order_ref_code,status) VALUES(?,?,?,?,?,?,?,?)');
 			$rc = $stmt->bind_param('iiiisssi',$user_id,$product_id,$address_id,$quantity,$unit,$date,$order_ref_code,$status);
@@ -80,6 +80,14 @@
         }*/
         
     }
+	
+	function random_strings($length_of_string) 
+	{ 
+		$str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; 
+		return substr(bin2hex(random_bytes($length_of_string)),0, $length_of_string); 
+	} 
+	  
+	
     // Converts array to an object
     function convertToObject($array) {
 		$object = new \stdClass();

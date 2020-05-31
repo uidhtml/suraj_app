@@ -1,0 +1,39 @@
+@import './../../../scss/inner-page-header';
+header {
+  a {
+    i {
+      color: green;
+    }
+  }
+}
+label {
+  width: 100%;
+  p {
+    margin-bottom: 0;
+  }
+}
+.submit {
+  margin-top: 20px;
+}
+.bottomSignInLinkCon {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  a {
+    color: green;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    i {
+      font-size: inherit;
+    }
+  }
+}
+:host {
+  background: #f7f7f7;
+  position: relative;
+  z-index: 3;
+  display: block;
+  min-height: 100vh;
+}

@@ -29,7 +29,6 @@ export class PaymentModeComponent implements OnInit {
     this.isLoaderVisible = false;
     this.userId = +localStorage.getItem('id');
     this.getAddressId();
-    console.log('hello i m payment page');
 
     this.httpService.getAllProducts().subscribe((data) => {
       if (data && data.length > 0) {
@@ -67,7 +66,6 @@ export class PaymentModeComponent implements OnInit {
 
   setOrderData() {
     this.httpService.getAllProducts().subscribe((data) => {
-      console.log(data);
       let categoryArray = Object.keys(data[0]);
       for (let category of categoryArray) {
         for (let product of data[0][category]) {
@@ -77,7 +75,6 @@ export class PaymentModeComponent implements OnInit {
             const date = new Date();
             product['date'] = date;
             product['status'] = 0;
-            console.log(product);
             this.orderArray.push(product);
           }
         }
@@ -93,13 +90,9 @@ export class PaymentModeComponent implements OnInit {
     this.httpService
       .postHttp(this.apiHostService.concatUrl(`${this.url}`), formData)
       .subscribe((response: { success: number; msg: string }) => {
-        console.log(response);
         this.isLoaderVisible = false;
         if (response.success === 1) {
-          console.log(`/${ROUTE_URLS.USER}/${ROUTE_URLS.ORDERS}/latest`);
-          this.httpService.getAllProducts().subscribe((data) => {
-            console.log(this.orderArray);
-          });
+          this.httpService.getAllProducts().subscribe((data) => {});
           this.router.navigate([
             `/${ROUTE_URLS.USER}/${ROUTE_URLS.ORDERS}/latest`,
           ]);

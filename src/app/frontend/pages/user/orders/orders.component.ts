@@ -5,7 +5,6 @@ import { ApiHostService } from '@shared/services/api-host.service';
 import { Product } from '../../products/products.interface';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { ROUTE_URLS } from '@app/route-urls-const';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-orders',
@@ -31,7 +30,6 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
       if (Object.keys(params).length > 0) {
-        console.log(params);
         const order_range = params.order_range;
         this.httpService
           .getHttp(
@@ -43,10 +41,8 @@ export class OrdersComponent implements OnInit {
             if (data) {
               if (data.results.length > 0) {
                 this.products.push(this.groupBy(data.results, 'date'));
-                console.log(this.products);
                 this.totalPurchaseDateWise = Object.keys(data.results).length;
                 this.httpService.getAllProducts().subscribe((data) => {
-                  console.log(data);
                   this.resetProductsProperties(data);
                 });
               }
@@ -54,15 +50,6 @@ export class OrdersComponent implements OnInit {
           });
       }
     });
-    console.log('I am order');
-    // this.router.events
-    //   .pipe(filter((event) => event instanceof NavigationEnd))
-    //   .subscribe(() => {
-    //     this.httpService.getAllProducts().subscribe((data) => {
-    //       console.log(data);
-    //       this.resetProductsProperties(data);
-    //     });
-    //   });
   }
 
   resetProductsProperties(data) {
@@ -79,7 +66,6 @@ export class OrdersComponent implements OnInit {
         }
       }
     }
-    console.log(data);
   }
 
   setProductDateArray() {

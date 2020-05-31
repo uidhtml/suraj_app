@@ -9,25 +9,40 @@
     </a>
   </header>
   <h2>Previously added address</h2>
-  <div class="allAddresses">
+  <div class="allAddresses" *ngIf="addressArray.length > 0">
     <p>Choose address</p>
     <ul>
       <li
-        *ngFor="let address of addressArray"
+        *ngFor="let address of addressArray; let i = index"
         (click)="selectAddress($event, address.id)"
         [ngClass]="{ active: address.defaultAddress === 1 }"
       >
-        <i class="material-icons default">done</i>
-        <h2>Contact person: {{ address.name }}</h2>
+        <h2>
+          Contact person: {{ address.person_name
+          }}<i class="material-icons default">done</i>
+        </h2>
         <p>Address: {{ address.address }},</p>
         <p>Landmark: {{ address.landmark }}</p>
         <p>
           {{ address.city }}-{{ address.pincode }}, {{ address.state }},
           {{ address.country }}
         </p>
+        <span
+          [ngClass]="{ active: address.defaultAddress }"
+          class="defaultAddress"
+          (click)="setDefault(i, address.id)"
+          >Default</span
+        >
+        <span
+          [ngClass]="{ active: address.defaultAddress }"
+          class="deleteAddress"
+          (click)="deleteAddress(i, address.id)"
+          ><i class="material-icons">close</i></span
+        >
       </li>
     </ul>
   </div>
+  <p *ngIf="!addressArray.length">No address has been added yet.</p>
   <h2>Add Address:</h2>
   <form novalidate [formGroup]="form" (ngSubmit)="submit($event)">
     <label>
@@ -49,9 +64,10 @@
     <label>
       Pincode:
       <select formControlName="pincode">
-        <option value="110019">110019</option>
-        <option value="110020">110020</option>
-        <option value="110030">110030</option>
+        <option [ngValue]="null">Select</option>
+        <option *ngFor="let pincode of pincodes" value="{{ pincode }}">{{
+          pincode
+        }}</option>
       </select>
     </label>
     <label>
@@ -64,7 +80,7 @@
     </label>
     <label class="checkboxCon">
       Default Address:
-      <input type="checkbox" formControlName="default" />
+      <input type="checkbox" formControlName="defaultAddress" />
     </label>
     <button class="submit" [disabled]="!form.valid">Add</button>
   </form>

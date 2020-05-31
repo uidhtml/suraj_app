@@ -6,7 +6,7 @@ import { ApiHostService } from '@shared/services/api-host.service';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  styleUrls: ['./edit.component.scss'],
 })
 export class EditComponent implements OnInit {
   public postData: {};
@@ -18,7 +18,7 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe((params) => {
       this.httpService
         .getHttp(
           this.apiHostService.concatUrl(`/single-product.php?id=${params.id}`)
@@ -26,7 +26,6 @@ export class EditComponent implements OnInit {
         .subscribe((data: { success: number; results: {}[] }) => {
           this.postData = data.results[0];
           this.postData['id'] = params.id;
-          console.log(this.postData);
         });
     });
   }

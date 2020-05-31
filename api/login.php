@@ -16,51 +16,60 @@
         $stmt = $con->prepare($query);
         $rc = $stmt->bind_param('ss', $username, $password);
         if ( false===$rc ) {
-            $returnObj->msg = 'Unable to bind values.';
-            die('prepare() failed: ' . htmlspecialchars($mysqli->error));
+            $returnObj->success = -1;
+			$returnObj->msg = 'Unable to bind values.';
+			$returnObj->error = htmlspecialchars($con->error);
         }
         $rc = $stmt->execute();
-        if ( false===$rc ) {
-            $returnObj->msg = 'Unable to execute the sql query.';
-            die('prepare() failed: ' . htmlspecialchars($mysqli->error));
+		if ( false===$rc ) {
+            $returnObj->success = -1;
+			$returnObj->msg = 'Unable to execute the sql query.';
+			$returnObj->error = htmlspecialchars($con->error);
         }else{
-            $result = $stmt->get_result();
-            $myObj=new \stdClass();
-            if($result->num_rows > 0){
-                $myObj->success = 1;
-                $myObj->msg = "Loggedin Successfully";
-				if($logger == 'users'){
-					// output data of each row
-					while($row = $result->fetch_assoc()) {
-						$myObj->id = $row["id"];
-						$myObj->firstName = $row["firstName"];
-						$myObj->middleName = $row["middleName"];
-						$myObj->lastName = $row["lastName"];
-						$myObj->mobile = $row["mobile"];
-						$myObj->email = $row["email"];
-						$myObj->username = $row["username"];
-						$myObj->image = $row["image"];
-						$myObj->code = $row["code"];
-						$myObj->status = $row["status"];
-					}
+			$stmt->store_result();
+			$num_of_rows = $stmt->num_rows; 
+			$myObj=new \stdClass();
+            if($num_of_rows > 0){
+				$meta = $stmt->result_metadata();
+				$results = getDataInArray($stmt, $meta);
+				if($results[0]['status'] == 0){
+					$myObj->success = -1;
+					$myObj->status = 0;
+					$myObj->msg = "It seems you have not activated your account. Click OK to activate.";
+				}else{
+					$myObj->success = 1;
+					$myObj->msg = "Loggedin Successfully";
+					$myObj->results = $results;
 				}
-				if($logger == 'admin'){
-					// output data of each row
-					while($row = $result->fetch_assoc()) {
-						$myObj->firstName = $row["firstName"];
-						$myObj->lastName = $row["lastName"];
-						$myObj->username = $row["username"];
-						$myObj->image = $row["image"];
-					}
-				}
-            }else{
+                
+			}else{
                 $myObj->success = -1;
-                $myObj->msg = "Incorrect Credentials!";
+                $myObj->msg = "Incorrect Credentials or no record found!";
             }
-            
-        }
-        
+		   
+			$stmt->close();
+		}        
     }
+	// Return all rows of table
+	function getDataInArray($stmt, $meta){
+		while ($field = $meta->fetch_field())
+		{
+			$params[] = &$row[$field->name];
+		}
+
+		call_user_func_array(array($stmt, 'bind_result'), $params);
+
+		while ($stmt->fetch()) {
+			foreach($row as $key => $val)
+			{
+				$c[$key] = $val;
+			}
+			$result[] = $c;
+		}
+		return $result;
+	}
+	
+	
     // Converts array to an object
     function convertToObject($array) {
 		$object = new \stdClass();

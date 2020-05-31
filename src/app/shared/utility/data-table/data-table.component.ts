@@ -3,7 +3,7 @@ import {
   OnChanges,
   Input,
   ViewChild,
-  AfterViewInit
+  AfterViewInit,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { DataTableElements } from './data-table.interface';
@@ -15,7 +15,7 @@ import { ROUTE_URLS } from '@app/route-urls-const';
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss']
+  styleUrls: ['./data-table.component.scss'],
 })
 export class DataTableComponent implements OnChanges, AfterViewInit {
   @Input() DATA_TABLE_ROWS;
@@ -28,9 +28,8 @@ export class DataTableComponent implements OnChanges, AfterViewInit {
   constructor(private router: Router) {}
 
   ngOnChanges() {
-    console.log(this.DATA_TABLE_ROWS);
     this.dataSource.data = this.DATA_TABLE_ROWS;
-    this.displayedColumns = this.DATA_TABLE_HEADER.map(column => column.name);
+    this.displayedColumns = this.DATA_TABLE_HEADER.map((column) => column.name);
   }
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -38,14 +37,9 @@ export class DataTableComponent implements OnChanges, AfterViewInit {
   }
   onRowClicked(id, mode) {
     if (mode === 'edit') {
-      console.log(id);
-      console.log(mode);
-      console.log(`/admin/products/${ROUTE_URLS.EDIT}/${id}`);
       this.router.navigate([`/admin/products/${ROUTE_URLS.EDIT}/${id}`]);
     }
     if (mode === 'delete') {
-      console.log(id);
-      console.log(mode);
       //this.router.navigate([`/admin/post/${ROUTE_URLS.EDIT}/${id}`]);
     }
   }

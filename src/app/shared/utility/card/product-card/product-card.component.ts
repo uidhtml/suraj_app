@@ -17,12 +17,10 @@ export class ProductCardComponent implements OnChanges, OnInit {
   constructor(private httpService: HttpService, private router: Router) {}
 
   ngOnChanges() {
-    console.log(this.products);
     this.categories = Object.keys(this.products);
   }
 
   ngOnInit() {
-    console.log(this.products);
     this.httpService.getAllProducts().subscribe((products) => {
       this.categories.length > 1
         ? (this.sliceProduct = 3)
@@ -31,7 +29,6 @@ export class ProductCardComponent implements OnChanges, OnInit {
   }
 
   addProduct($event) {
-    console.log('Added product: ', $event);
     const id = $event.id;
     const quantity = $event.quantity;
     Object.keys(this.products).forEach((key) => {
@@ -46,18 +43,14 @@ export class ProductCardComponent implements OnChanges, OnInit {
   }
 
   productDeatails($event, product) {
-    console.log(product);
     $event.preventDefault();
-    console.log($event.target.classList);
     const counterClass = $event.target.classList.contains('counter');
     const quantityClass = $event.target.classList.contains('quantity');
-    console.log(quantityClass);
     if (
       $event.target.nodeName !== 'BUTTON' &&
       !counterClass &&
       !quantityClass
     ) {
-      console.log(`/${ROUTE_URLS.PRODUCTS}/${product.category}/${product.id}`);
       this.router.navigate([
         `/${ROUTE_URLS.PRODUCTS}/${product.category}/${product.id}`,
       ]);

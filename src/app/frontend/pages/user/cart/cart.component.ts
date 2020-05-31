@@ -26,7 +26,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.httpService.getAllProducts().subscribe((data) => {
-      console.log('cart page product: ', data);
       if (data) {
         const products = data;
         for (let product of products) {
@@ -49,7 +48,6 @@ export class CartComponent implements OnInit {
             }
           }
         }
-        console.log(this.productIncart);
       }
     });
   }
@@ -86,7 +84,6 @@ export class CartComponent implements OnInit {
 
   proceed() {
     this.authService.checkLogin();
-    console.log(`/${ROUTE_URLS.USER}/${ROUTE_URLS.SHIPPING}`);
     this.router.navigate([`/${ROUTE_URLS.USER}/${ROUTE_URLS.SHIPPING}`]);
   }
 }

@@ -1,3 +1,47 @@
-<p>
-profile works!
-</p>
+<app-loader *ngIf="isLoaderVisible"></app-loader>
+<div class="fullPageWrapper" *ngIf="profileDetails.length > 0">
+  <header>
+    <i class="material-icons" (click)="goBack()">arrow_back</i>
+    <div class="title">Profile</div>
+    <span class="separator"></span>
+    <a routerLink="/">
+      <i class="material-icons">home</i>
+    </a>
+  </header>
+  <h2>Hi, {{ profileDetails[0].firstName }}</h2>
+  <ul class="profileDetails">
+    <li>
+      <span>First Name<span>:</span></span> {{ profileDetails[0].firstName }}
+    </li>
+    <li>
+      <span>Middle Name<span>:</span></span> {{ profileDetails[0].middleName }}
+    </li>
+    <li>
+      <span>Last Name<span>:</span></span> {{ profileDetails[0].lastName }}
+    </li>
+    <li>
+      <span>Mobile<span>:</span></span> {{ profileDetails[0].username }}
+    </li>
+    <li>
+      <span>Username<span>:</span></span> {{ profileDetails[0].username }}
+    </li>
+    <li>
+      <span>Email<span>:</span></span> {{ profileDetails[0].email }}
+    </li>
+    <li>
+      <span>Profile Pic<span>:</span></span>
+      <div class="imgCol">
+        <img
+          src="./assets/uploads/images/profile_pic/{{
+            profileDetails[0].image
+          }}"
+        />
+      </div>
+    </li>
+    <li>
+      <span>Password<span>:</span></span
+      >*******
+    </li>
+  </ul>
+  <a class="button" routerLink="/user/update-profile">Update</a>
+</div>

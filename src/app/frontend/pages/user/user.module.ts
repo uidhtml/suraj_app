@@ -14,6 +14,8 @@ import { ActivationComponent } from './activation/activation.component';
 import { UserStatusComponent } from './user-status/user-status.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { PaymentModeComponent } from './payment-mode/payment-mode.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const userComponents = [
   UserComponent,
@@ -26,10 +28,12 @@ const userComponents = [
   UserStatusComponent,
   ShippingComponent,
   PaymentModeComponent,
+  UpdateProfileComponent,
 ];
 
 @NgModule({
   declarations: [...userComponents],
   imports: [CommonModule, UserRoutingModule, SharedModule, ReactiveFormsModule],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
 })
 export class UserModule {}

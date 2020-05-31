@@ -2,49 +2,13 @@
 <div class="fullPageWrapper">
   <header>
     <i class="material-icons" (click)="goBack()">arrow_back</i>
-    <div class="title">Create Example Account</div>
+    <div class="title">Create Haxxix Account</div>
     <span class="separator"></span>
     <a routerLink="/">
       <i class="material-icons">home</i>
     </a>
   </header>
   <form novalidate [formGroup]="form" (ngSubmit)="submit($event)">
-    <!-- <label for="country" aria-label="Country">Unit
-    <select formControlName="country">
-      <option value="">Select</option>
-      <option value="IND">India</option>
-    </select>
-  </label>
-  <label for="fullName" aria-label="Full name">Full Name
-    <input type="text" formControlName="fullName" placeholder="Enter full name">
-  </label>
-  <label for="mobile" aria-label="Mobile Number">Mobile Number
-    <input type="text" name="mobile" placeholder="10-digit mobile number without prefixes">
-  </label>
-  <label for="email" aria-label="Our Price">Email Id
-    <input type="text" formControlName="email" placeholder="Enter email id">
-  </label>
-  <label for="streetAddress" aria-label="Street Address">Street Address
-    <input type="text" formControlName="streetAddress" placeholder="Flat / House No. / Floor / Building">
-  </label>
-  <label for="landmark" aria-label="Landmark">In Stock
-    <input type="text" formControlName="landmark" placeholder="E.g. Near AIIMS Flyover, Behind Regal Cinema, etc.">
-  </label>
-  <label for="city" aria-label="city">In Stock
-    <input type="text" formControlName="city" placeholder="">
-  </label>
-  
-  <label for="state" aria-label="State">Unit
-    <select formControlName="state">
-      <option value="">Select</option>
-    </select>
-  </label>
-  <label for="city" aria-label="City">Unit
-    <select formControlName="city">
-      <option value="">Select</option>
-    </select>
-  </label>  
-  <button class="submit">Add</button> -->
     <label for="firstName" aria-label="Your First Name"
       ><span class="required">First Name</span>
       <input
@@ -120,7 +84,7 @@
     <label for="password" aria-label="Create password"
       ><span class="required">Password</span>
       <input
-        type="text"
+        type="password"
         [class.error]="password.touched && password.invalid"
         formControlName="password"
         placeholder="At least 6 characters"
@@ -152,7 +116,7 @@
     <label for="confPassword" aria-label="Create confPassword"
       ><span class="required">Confirm Password</span>
       <input
-        type="text"
+        type="password"
         [class.error]="confPassword.touched && confPassword.invalid"
         formControlName="confPassword"
         placeholder="At least 6 characters"
@@ -192,10 +156,6 @@
     </p>
     <button class="submit" [disabled]="!form.valid">Submit</button>
   </form>
-  <pre>
-    {{ form.getRawValue() | json }}
-  </pre>
-  {{ form.status }}
   <div class="bottomSignInLinkCon">
     <a routerLink="/user/login"
       ><i class="material-icons">power_settings_new</i>Sign In</a

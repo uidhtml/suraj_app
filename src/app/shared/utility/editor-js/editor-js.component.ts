@@ -4,7 +4,7 @@ import {
   Input,
   EventEmitter,
   Output,
-  OnChanges
+  OnChanges,
 } from '@angular/core';
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
@@ -24,7 +24,7 @@ import InlineCode from '@editorjs/inline-code';
 @Component({
   selector: 'app-editor-js',
   templateUrl: './editor-js.component.html',
-  styleUrls: ['./editor-js.component.scss']
+  styleUrls: ['./editor-js.component.scss'],
 })
 export class EditorJsComponent implements OnInit {
   @Input() editorData: { time: number; blocks: []; version: string };
@@ -39,27 +39,27 @@ export class EditorJsComponent implements OnInit {
       tools: {
         header: {
           class: Header,
-          inlineToolbar: ['link']
+          inlineToolbar: ['link'],
         },
         list: {
           class: List,
-          inlineToolbar: true
+          inlineToolbar: true,
         },
         checklist: {
           class: Checklist,
-          inlineToolbar: true
+          inlineToolbar: true,
         },
         paragraph: {
           class: Paragraph,
-          inlineToolbar: true
+          inlineToolbar: true,
         },
         Marker: {
           class: Marker,
-          shortcut: 'CMD+SHIFT+M'
+          shortcut: 'CMD+SHIFT+M',
         },
         inlineCode: {
           class: InlineCode,
-          shortcut: 'CMD+SHIFT+M'
+          shortcut: 'CMD+SHIFT+M',
         },
         embed: Embed,
         quote: Quote,
@@ -68,16 +68,16 @@ export class EditorJsComponent implements OnInit {
           class: Personality,
           config: {
             endpoint: 'upload-image.php', // Your backend file uploader endpoint
-            types: 'image/png, image/jpg, image/bmp'
-          }
+            types: 'image/png, image/jpg, image/bmp',
+          },
         },
         table: {
           class: Table,
           inlineToolbar: true,
           config: {
             rows: 2,
-            cols: 3
-          }
+            cols: 3,
+          },
         },
         image: {
           class: ImageTool,
@@ -85,33 +85,33 @@ export class EditorJsComponent implements OnInit {
             endpoints: {
               byFile:
                 'http://localhost/angular-v8/uidhtml-v8/api/upload-image.php', // Your backend file uploader endpoint
-              byUrl: 'http://localhost:8000/fetchUrl' // Your endpoint that provides uploading by Url
+              byUrl: 'http://localhost:8000/fetchUrl', // Your endpoint that provides uploading by Url
             },
-            types: 'image/png, image/jpg, image/jpeg, image/bmp'
-          }
+            types: 'image/png, image/jpg, image/jpeg, image/bmp',
+          },
         },
         attaches: {
           class: AttachesTool,
           config: {
             endpoint: 'http://localhost:8000/uploadFile',
-            types: 'application/zip'
-          }
-        }
+            types: 'application/zip',
+          },
+        },
       },
       onReady: () => {
-        console.log('Editor.js is ready to work!');
+        //console.log('Editor.js is ready to work!');
       },
       onChange: () => {
         this.editor
           .save()
-          .then(outputData => {
+          .then((outputData) => {
             this.sendEditorData.emit(outputData);
           })
-          .catch(error => {
-            console.log('Saving failed: ', error);
+          .catch((error) => {
+            //console.log('Saving failed: ', error);
           });
       },
-      data: this.editorData
+      data: this.editorData,
     });
   }
 }
