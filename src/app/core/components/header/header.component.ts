@@ -44,8 +44,6 @@ export class HeaderComponent implements OnInit, DoCheck {
     if (this.authService.isLoggedIn) {
       this.loggerData.firstName = localStorage.getItem('firstName');
       this.loggerData.image = localStorage.getItem('image').trim();
-
-      console.log(this.loggerData);
     }
     this.httpService
       .getHttp(this.apiHostService.concatUrl(`${this.url}`))

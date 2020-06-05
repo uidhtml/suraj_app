@@ -1,1 +1,76 @@
 @import './../../../scss/inner-page-header';
+header {
+  a {
+    i {
+      color: green;
+    }
+  }
+}
+h2 {
+  text-align: center;
+  text-transform: capitalize;
+}
+.profileDetails {
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 20px;
+  li {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-bottom: dashed 1px #eee;
+    span:first-child {
+      flex-basis: 30%;
+      display: flex;
+      justify-content: space-between;
+      span {
+        flex-basis: auto;
+      }
+    }
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      text-transform: capitalize;
+    }
+    span {
+      font-weight: normal;
+      align-items: center;
+    }
+  }
+}
+.imgCol {
+  width: 100px;
+  padding: 2px;
+  border: solid 1px #eee;
+  background-color: #fff;
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+.button {
+  padding: 10px 20px;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 3px;
+  margin-left: 10px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+:host {
+  background: #f7f7f7;
+  position: relative;
+  z-index: 3;
+  display: block;
+  min-height: 100vh;
+}

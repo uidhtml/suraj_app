@@ -1,1 +1,36 @@
-<p>activation works!</p>
+<div class="fullPageWrapper">
+  <header>
+    <div class="title">Account Activation<span class="separator"></span></div>
+    <a routerLink="/">
+      <i class="material-icons">home</i>
+    </a>
+  </header>
+  <h2 class="heading">Please activate your account</h2>
+  <form novalidate [formGroup]="form" (ngSubmit)="sendOtp($event)">
+    <label
+      >Enter mobile number
+      <input formControlName="mobile" />
+    </label>
+    <button class="submit" [disabled]="!form.valid || isSmsSendSuccessfully">
+      GET OTP
+    </button>
+  </form>
+  <form
+    novalidate
+    [formGroup]="validateOtpForm"
+    (ngSubmit)="validateOtp($event)"
+  >
+    <label
+      >Enter OTP
+      <input
+        formControlName="otp"
+        [readonly]="!isSmsSendSuccessfully"
+        maxlength="6"
+        minlength="6"
+      />
+    </label>
+    <button class="submit" [disabled]="!validateOtpForm.valid">
+      Activate
+    </button>
+  </form>
+</div>

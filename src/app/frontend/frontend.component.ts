@@ -6,7 +6,7 @@ import { Product } from './pages/products/products.interface';
 @Component({
   selector: 'app-frontend',
   templateUrl: './frontend.component.html',
-  styleUrls: ['./frontend.component.scss']
+  styleUrls: ['./frontend.component.scss'],
 })
 export class FrontendComponent implements OnInit {
   private url: string = '/products.php';
@@ -56,9 +56,7 @@ export class FrontendComponent implements OnInit {
 
   findMe() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        console.log(position);
-      });
+      navigator.geolocation.getCurrentPosition((position) => {});
     } else {
       alert('Geolocation is not supported by this browser.');
     }

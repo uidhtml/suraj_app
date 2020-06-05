@@ -1,0 +1,25 @@
+@import './../../../scss/inner-page-header';
+header {
+  .title {
+    flex: 1 auto;
+    display: flex;
+    align-items: center;
+  }
+  a {
+    i {
+      color: green;
+    }
+  }
+}
+label {
+  width: 100%;
+  p {
+    margin-bottom: 0;
+  }
+}
+:host {
+  background: #f7f7f7;
+  position: relative;
+  z-index: 3;
+  display: block;
+}

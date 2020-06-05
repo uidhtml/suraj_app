@@ -26,4 +26,5 @@ export const ROUTE_URLS = {
   SHIPPING: 'shipping',
   PAYMENTMODE: 'payment-mode',
   ORDERS: 'orders',
+  PROFILE: 'profile',
 };

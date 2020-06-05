@@ -1,3 +1,3 @@
 <?php 
-$siteUrl = "http://localhost/projects/suraj";
+$siteUrl = "http://localhost/suraj_app";
 ?>

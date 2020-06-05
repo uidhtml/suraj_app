@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://localhost/projects/suraj",
+    "target": "http://localhost/suraj_app",
     "secure": false,
     "logLevel": "debug"
   }

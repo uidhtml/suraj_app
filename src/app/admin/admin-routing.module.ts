@@ -18,30 +18,32 @@ const routes: Routes = [
       {
         path: ROUTE_URLS.DASHBAORD,
         component: DashboardComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: ROUTE_URLS.PRODUCTS,
         canActivate: [AuthGuard],
         loadChildren: () =>
-          import('./pages/products/products.module').then(m => m.ProductsModule)
+          import('./pages/products/products.module').then(
+            (m) => m.ProductsModule
+          ),
       },
       {
         path: '',
         redirectTo: `/${ROUTE_URLS.ADMIN}/${ROUTE_URLS.LOGIN}`,
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: '**',
         redirectTo: `/${ROUTE_URLS.ADMIN}/${ROUTE_URLS.LOGIN}`,
-        pathMatch: 'full'
-      }
-    ]
-  }
+        pathMatch: 'full',
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AdminRoutingModule {}

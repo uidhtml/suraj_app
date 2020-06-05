@@ -3,7 +3,7 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
 @Component({
   selector: 'app-main-category-links',
   templateUrl: './main-category-links.component.html',
-  styleUrls: ['./main-category-links.component.scss']
+  styleUrls: ['./main-category-links.component.scss'],
 })
 export class MainCategoryLinksComponent implements OnInit, OnChanges {
   @Input() categories;
@@ -11,7 +11,6 @@ export class MainCategoryLinksComponent implements OnInit, OnChanges {
   ngOnInit() {}
   ngOnChanges() {
     if (this.categories.length > 0) {
-      console.log(this.categories);
       this.categories.unshift('all');
     }
   }

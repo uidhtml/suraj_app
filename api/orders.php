@@ -1,5 +1,5 @@
 <?php
-	header('Access-Control-Allow-Origin: http://localhost:4200');
+	header('Access-Control-Allow-Origin: http://haxxix.com');
     header('Access-Control-Allow-Methods: GET, POST');
     header('Access-Control-Allow-Headers: X-Requested-With, content-type, access-control-allow-origin , authorization, access-control-allow-methods, access-control-allow-headers');
     header('Content-Type: application/json; charset=utf-8');
@@ -12,39 +12,40 @@
 	
 	require('./connection/dbConnection.php');
 	$arr = array();
-	
-	/*$category = $_GET['category'];
-	if($category === 'all'){
-		$stmt = $con->prepare("SELECT * FROM products");
-	}else{
-		$stmt = $con->prepare("SELECT * FROM products WHERE category='$category'");
-	}*/
+
 	$stmt = $con->prepare("SELECT orders.*, products.name,products.category, products.image, shipping.person_name,shipping.country,shipping.state,shipping.city,shipping.pincode,shipping.address,shipping.landmark FROM orders INNER JOIN products ON orders.product_id = products.id INNER JOIN shipping ON orders.address_id=shipping.id WHERE orders.user_id = '$user_id'");
 	$stmt->execute();
-	$result = $stmt->get_result();
-	while($row = $result->fetch_object()) {
-		$arr[] = $row;
-		/*print_r($row);
-		$orderRefArray = array();
-		$dateObj = date('Y-m-d', strtotime($row->date));
-		/*$tempObj->user_id = $row->user_id;
-		$tempObj->product_id = $row->product_id;
-		$tempObj->address_id = $row->address_id;
-		$tempObj->quantity = $row->quantity;
-		$tempObj->unit = $row->unit;
-		$tempObj->date = date('Y-m-d', strtotime($row->date));
-		$tempObj->order_ref_code = $row->order_ref_code;
-		$tempObj->status = $row->status;
-		
-		array_push($orderRefArray, array($dateObj->date=>$row));*/
-	}
-	//print_r($orderRefArray);
-	if(!$arr){
-		$returnObj->results = [];
+	$stmt->store_result();
+	$num_of_rows = $stmt->num_rows; 
+	if($num_of_rows > 0){
+		$meta = $stmt->result_metadata();
+		$results = getDataInArray($stmt, $meta);
+		$returnObj->success = 1;
+		$returnObj->results = $results;		
 	}else{
-		$returnObj->results = $arr;
+		$returnObj->success = -1;
+		$returnObj->results = [];
 	}
 	$stmt->close();
+	
+	// Return all rows of table
+	function getDataInArray($stmt, $meta){
+		while ($field = $meta->fetch_field())
+		{
+			$params[] = &$row[$field->name];
+		}
+
+		call_user_func_array(array($stmt, 'bind_result'), $params);
+
+		while ($stmt->fetch()) {
+			foreach($row as $key => $val)
+			{
+				$c[$key] = $val;
+			}
+			$result[] = $c;
+		}
+		return $result;
+	}
 	
 	echo json_encode($returnObj);
 ?>

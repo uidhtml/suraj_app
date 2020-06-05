@@ -8,6 +8,7 @@ import { EditComponent } from './edit/edit.component';
 import { ProductsComponent } from './products.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -15,13 +16,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductFormComponent,
     AddComponent,
     ListComponent,
-    EditComponent
+    EditComponent,
   ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
     ReactiveFormsModule,
-    SharedModule
-  ]
+    SharedModule,
+  ],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
 })
 export class ProductsModule {}

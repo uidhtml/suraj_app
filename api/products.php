@@ -1,5 +1,5 @@
 <?php
-	header('Access-Control-Allow-Origin: http://localhost:4200');
+	header('Access-Control-Allow-Origin: http://haxxix.com');
     header('Access-Control-Allow-Methods: GET, POST');
     header('Access-Control-Allow-Headers: X-Requested-With, content-type, access-control-allow-origin , authorization, access-control-allow-methods, access-control-allow-headers');
     header('Content-Type: application/json; charset=utf-8');
@@ -10,17 +10,10 @@
 	
 	require('./connection/dbConnection.php');
 	$arr = [];
-	
-	/*$category = $_GET['category'];
-	if($category === 'all'){
-		$stmt = $con->prepare("SELECT * FROM products");
-	}else{
-		$stmt = $con->prepare("SELECT * FROM products WHERE category='$category'");
-	}*/
-	$stmt = $con->prepare("SELECT * FROM products");
-	$stmt->execute();
-	$result = $stmt->get_result();
-	while($row = $result->fetch_object()) {
+
+	$stmt = "SELECT * FROM products";
+	$results = $con->query($stmt);
+	while($row = $results->fetch_object()) {
 	  $arr[] = $row;
 	}
 	if(!$arr){
@@ -28,7 +21,6 @@
 	}else{
 		$returnObj->results = $arr;
 	}
-	$stmt->close();
 	
 	echo json_encode($returnObj);
 ?>

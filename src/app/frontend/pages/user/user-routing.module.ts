@@ -10,6 +10,7 @@ import { UserStatusComponent } from './user-status/user-status.component';
 import { ActivationComponent } from './activation/activation.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { PaymentModeComponent } from './payment-mode/payment-mode.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 const routes: Routes = [
   { path: 'cart', component: CartComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'update-profile', component: UpdateProfileComponent },
   { path: 'orders/:order_range', component: OrdersComponent },
   { path: 'status', component: UserStatusComponent },
   { path: 'activation', component: ActivationComponent },

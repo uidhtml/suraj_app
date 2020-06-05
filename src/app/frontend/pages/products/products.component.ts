@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CartService } from '@shared/services/cart.service';
-import { Product } from './products.interface';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '@shared/services/http.service';
 
@@ -23,7 +21,6 @@ export class ProductsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       const category = params.category;
       this.httpService.getAllProducts().subscribe((data) => {
-        console.log('products', data);
         if (data) {
           this.categories = [...new Set(Object.keys(data[0]))];
         }

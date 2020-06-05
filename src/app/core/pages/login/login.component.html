@@ -1,10 +1,13 @@
-<div class="backIconCon" (click)="goBack()">
-  <i class="material-icons backIcon">arrow_back</i>Back
-</div>
+<a
+  class="backIconCon"
+  [routerLink]="pageName === 'admin' ? '/admin/login' : '/'"
+>
+  <i class="material-icons backIcon">home</i>Home
+</a>
 <div class="loginWrapper">
   <header>
     <h5>Welcome to</h5>
-    <h2>Example.com</h2>
+    <h2>Haxxix.com</h2>
     <h4><i class="material-icons">person_pin</i>{{ pageName }}</h4>
     <h3>Login</h3>
   </header>
@@ -39,9 +42,4 @@
       >
     </p>
   </div>
-
-  <pre>
-  {{ form.value | json }}
-</pre
-  >
 </div>

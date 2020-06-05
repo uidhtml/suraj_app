@@ -71,6 +71,12 @@ export class SignupComponent implements OnInit {
   submit($event): void {
     this.isLoaderVisible = true;
     this.formData = this.createFormData(this.form.getRawValue());
+    if (
+      this.form.get('image').value === '' ||
+      this.form.get('image').value === null
+    ) {
+      this.formData.append('image', 'default.png');
+    }
     this.formData.append('imageFile', this.imageFile);
     this.httpService
       .postHttp(
@@ -82,6 +88,7 @@ export class SignupComponent implements OnInit {
           success: number;
           title: string;
           msg: string;
+          otp: any;
           error?: {}[];
         }) => {
           this.isLoaderVisible = false;
@@ -153,7 +160,7 @@ export class SignupComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
-        this.router.navigate([`/${ROUTE_URLS.USER}/${ROUTE_URLS.USER_STATUS}`]);
+        this.router.navigate([`/${ROUTE_URLS.USER}/${ROUTE_URLS.ACTIVATION}`]);
       }
     });
   }
