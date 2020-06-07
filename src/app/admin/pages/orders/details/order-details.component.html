@@ -1,0 +1,63 @@
+<div class="fullPageWrapper" *ngIf="orders.length > 0">
+  <header>
+    <i class="material-icons" (click)="goBack()">arrow_back</i>
+    <div class="title">Order Details<span class="separator"></span></div>
+  </header>
+  <div class="wrapper productInfo">
+    <h2>
+      Products
+      <span *ngIf="+orders[0].status === 0" class="auto-basis not-delivered">
+        Not Delivered
+      </span>
+
+      <span *ngIf="+orders[0].status === 1" class="auto-basis delivered">
+        Delivered
+      </span>
+    </h2>
+    <ul class="details">
+      <li *ngFor="let order of orders">
+        <span>{{ order.name }}</span
+        ><span>{{ order.quantity }}{{ order.unit }}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="wrapper personInfo">
+    <h2>Person Info:</h2>
+    <ul class="details">
+      <li>
+        <img src="/assets/uploads/images/profile_pic/{{ orders[0].image }}" />
+      </li>
+      <li>
+        <span>Name</span
+        ><span
+          >{{ orders[0].firstName }} {{ orders[0].middleName }}
+          {{ orders[0].lastName }}</span
+        >
+      </li>
+      <li>
+        <span>Mobile</span><span>{{ orders[0].mobile }}</span>
+      </li>
+      <li>
+        <span>Email</span><span>{{ orders[0].email }}</span>
+      </li>
+      <li>
+        <span>Address</span><span>{{ orders[0].address }}</span>
+      </li>
+      <li>
+        <span>Landmark</span><span>{{ orders[0].landmark }}</span>
+      </li>
+      <li>
+        <span>City</span><span>{{ orders[0].city }}</span>
+      </li>
+      <li>
+        <span>State</span><span>{{ orders[0].state }}</span>
+      </li>
+      <li>
+        <span>Country</span><span>{{ orders[0].country }}</span>
+      </li>
+      <li>
+        <span>Pincode</span><span>{{ orders[0].pincode }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

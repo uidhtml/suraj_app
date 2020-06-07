@@ -13,13 +13,13 @@ const routes: Routes = [
       { path: 'all', component: ListComponent },
       { path: 'add', component: AddComponent },
       { path: 'edit/:id', component: EditComponent },
-      { path: '', redirectTo: '', pathMatch: 'full' }
-    ]
-  }
+      { path: '', redirectTo: '/admin/products/all', pathMatch: 'full' },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ProductsRoutingModule {}

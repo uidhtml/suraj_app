@@ -1,4 +1,5 @@
-.overlay, .sidebarWrapper{
+.overlay,
+.sidebarWrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -6,50 +7,52 @@
   height: 100vh;
   z-index: 3;
 }
-.sidebarWrapper{
+.sidebarWrapper {
   max-width: 300px;
   background: #fff;
   z-index: 4;
   transform: translateX(0);
-  transition: transform linear .2s;
+  transition: transform linear 0.2s;
 }
-.overlay{
-  background: rgba(0,0,0,.4);
-  transition: opacity linear .2s;
+.overlay {
+  background: rgba(0, 0, 0, 0.4);
+  transition: opacity linear 0.2s;
 }
-header,.block{
+header,
+.block {
   padding: 15px 20px;
   border-bottom: 1px solid #e2ebee;
 }
-header{
+header {
   display: flex;
   align-items: center;
   font-size: 2rem;
   text-transform: capitalize;
   color: #5d5d5d;
   background: #fafafa;
-  .title{
+  .title {
     font-weight: 400;
   }
 }
-li{
-  a{
+li {
+  a {
     color: #777;
     font-size: 1.6rem;
     text-decoration: none;
     display: flex;
     align-items: center;
     padding: 10px 0;
-    i{
+    text-transform: capitalize;
+    i {
       font-size: 2.1rem;
       margin-right: 5px;
     }
   }
 }
-.fadeOut{
+.fadeOut {
   opacity: 0;
   visibility: hidden;
 }
-.slideOut{
+.slideOut {
   transform: translateX(-300px);
 }

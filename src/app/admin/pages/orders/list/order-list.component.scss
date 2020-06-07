@@ -1,15 +1,24 @@
+.outerWrapper {
+  padding-top: 80px;
+}
+
 h2 {
-  font-weight: 600;
-  border-radius: 3px;
-  font-size: 1.7rem;
-  color: #2c8a1e;
   margin-bottom: 10px;
+  padding-bottom: 10px;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: #0d6500;
   text-align: center;
+  border-bottom: dashed 1px #3cc827;
 }
 h3 {
+  margin: 20px 0 10px;
+  justify-content: center;
+}
+h4 {
   font-weight: 600;
   color: #c5aeae;
-  background-color: #f9f9f9;
+  background-color: #dbffd6;
   padding: 10px;
   margin-bottom: 0;
   border: solid 1px #eee;
@@ -18,6 +27,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   font-size: 1.3rem;
+  flex-direction: row;
   span {
     font-style: italic;
     span {
@@ -40,7 +50,7 @@ h3 {
     justify-content: space-between;
     padding: 7px 0;
     line-height: 1.8rem;
-    border-bottom: solid 1px #eee;
+    border-bottom: dashed 1px #eee;
     align-items: center;
     color: #333;
     &:first-child {
@@ -53,7 +63,6 @@ h3 {
   }
   span {
     font-weight: 600;
-    flex-basis: 50%;
     text-align: right;
     color: inherit;
     text-transform: capitalize;
@@ -74,7 +83,32 @@ button {
     font-weight: normal;
   }
 }
+.counting {
+  width: 40px;
+  color: #fff;
+}
+.mat-card-actions {
+  a {
+    width: 100%;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
 
+.not-delivered {
+  color: red !important;
+  background-color: #f9f9f9;
+  padding: 5px 10px;
+  border: dashed 1px red;
+}
+.delivered {
+  padding: 5px 10px;
+  color: lightgreen !important;
+  border: dashed 1px lightgreen;
+  background-color: #f9f9f9;
+}
 ::ng-deep {
   .mat-card-header-text {
     margin: 0 !important;

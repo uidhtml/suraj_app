@@ -12,7 +12,7 @@
 	$arr = array();
 
 	$stmt = $con->prepare("
-		SELECT DISTINCT orders.order_ref_code, orders.date,
+		SELECT DISTINCT orders.order_ref_code, orders.date, orders.status,
 		shipping.person_name,
 		users.mobile 
 		FROM orders

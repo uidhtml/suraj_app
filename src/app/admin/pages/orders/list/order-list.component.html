@@ -1,0 +1,68 @@
+<div class="outerWrapper">
+  <h2>All orders</h2>
+  <ng-container *ngIf="orders.length > 0">
+    <div class *ngFor="let obj of orders[0] | keyvalue; let i = index">
+      <h3>{{ obj.key | date: 'MMMM d, y' }}</h3>
+      <div class="order-list">
+        <ng-container *ngFor="let order of obj.value">
+          <h4>
+            <button class="counting" mat-flat-button color="accent">
+              {{ i + 1 }}
+            </button>
+            <span>
+              Time: <span> {{ obj.value[0].date | date: 'h:mm a' }} </span>
+            </span>
+            <span>
+              No.
+              <span> #{{ obj.value[0].order_ref_code }} </span>
+            </span>
+          </h4>
+          <mat-card>
+            <mat-card-content>
+              <ul class="order-details">
+                <li>
+                  Name:<span>{{ order.person_name }}</span>
+                </li>
+                <li>
+                  Mobile:<span>{{ order.mobile }}</span>
+                </li>
+                <li *ngIf="order.status === 0">
+                  Status:
+                  <span class="auto-basis not-delivered">
+                    Not Delivered
+                  </span>
+                </li>
+
+                <li *ngIf="order.status === 1">
+                  Status:
+                  <span class="auto-basis delivered">
+                    Delivered
+                  </span>
+                </li>
+              </ul>
+            </mat-card-content>
+            <mat-card-actions>
+              <a
+                *ngIf="order.status === 0"
+                mat-flat-button
+                color="warn"
+                routerLink="/admin/orders/details/{{ order.order_ref_code }}"
+              >
+                Details
+              </a>
+              <a
+                *ngIf="order.status === 1"
+                mat-flat-button
+                color="accent"
+                routerLink="/admin/orders/details/{{ order.order_ref_code }}"
+              >
+                Details
+              </a>
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+  <p *ngIf="orders.length <= 0">!Sorry, No any order in the list.</p>
+</div>

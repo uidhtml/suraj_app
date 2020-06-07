@@ -14,7 +14,8 @@ export class SidebarComponent implements OnInit {
 
   public adminLinks = [
     { title: 'dashboard', icon: 'dashboard', link: 'dashboard' },
-    { title: 'all product', icon: 'done_all', link: 'products/all' },
+    { title: 'all orders', icon: 'shopping_cart', link: 'orders' },
+    { title: 'all product', icon: 'category', link: 'products' },
     { title: 'add product', icon: 'add', link: 'products/add' },
   ];
   public userLinks = [

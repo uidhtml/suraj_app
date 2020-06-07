@@ -29,6 +29,12 @@ const routes: Routes = [
           ),
       },
       {
+        path: ROUTE_URLS.ORDERS,
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./pages/orders/orders.module').then((m) => m.OrdersModule),
+      },
+      {
         path: '',
         redirectTo: `/${ROUTE_URLS.ADMIN}/${ROUTE_URLS.LOGIN}`,
         pathMatch: 'full',

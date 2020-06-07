@@ -7,10 +7,9 @@ import { MaterialModule } from './../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { OrderListComponent } from './components/order-list/order-list.component';
 
 @NgModule({
-  declarations: [AdminComponent, DashboardComponent, OrderListComponent],
+  declarations: [AdminComponent, DashboardComponent],
   imports: [
     AdminRoutingModule,
     MaterialModule,

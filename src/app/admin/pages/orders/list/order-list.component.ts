@@ -21,9 +21,7 @@ export class OrderListComponent implements OnInit {
       .subscribe((data: { results }) => {
         if (data) {
           if (data.results.length > 0) {
-            //this.orders = data.results;
             this.orders.push(this.groupBy(data.results, 'date'));
-            console.log(this.orders);
           }
         }
       });

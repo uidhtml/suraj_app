@@ -14,7 +14,7 @@
 		
 		public function send(){
 			require('textlocal.class.php');
-			$apiKey = urlencode('hE+knkWSwng-U7zxWJsuJbWebgMyRVn6Yi1h2qaBVt');
+			$apiKey = urlencode('wdN13ocr+WI-m2G2TpPjl0yg5Pyr1k7ySjz7Fof4Bc');
 			$textlocal = new Textlocal(false, false, $apiKey);
 			try {
 				$result = $textlocal->sendSms($this->numbers, $this->msg, $this->sender);
