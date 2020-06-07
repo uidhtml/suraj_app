@@ -4,6 +4,8 @@ import {
   Input,
   ViewChild,
   AfterViewInit,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { DataTableElements } from './data-table.interface';
@@ -20,6 +22,9 @@ import { ROUTE_URLS } from '@app/route-urls-const';
 export class DataTableComponent implements OnChanges, AfterViewInit {
   @Input() DATA_TABLE_ROWS;
   @Input() DATA_TABLE_HEADER: Array<any>;
+
+  @Output() rowAction: EventEmitter<any> = new EventEmitter();
+
   public displayedColumns: string[] = [];
   public dataSource = new MatTableDataSource<DataTableElements>();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -35,12 +40,7 @@ export class DataTableComponent implements OnChanges, AfterViewInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
-  onRowClicked(id, mode) {
-    if (mode === 'edit') {
-      this.router.navigate([`/admin/products/${ROUTE_URLS.EDIT}/${id}`]);
-    }
-    if (mode === 'delete') {
-      //this.router.navigate([`/admin/post/${ROUTE_URLS.EDIT}/${id}`]);
-    }
+  onRowClicked(id: number, mode: string) {
+    this.rowAction.emit({ id, mode });
   }
 }

@@ -1,31 +1,40 @@
-<h2>Date:31-05-2020</h2>
-<div class="order-list">
-  <h3>Orders: 11 PM<span>No. #110013</span></h3>
-  <mat-card>
-    <mat-card-content>
-      <ul class="order-details">
-        <li>Name:<span>Gautam Kumar</span></li>
-        <li>Mobile:<span>9953210510</span></li>
-        <li>Status:<span>Pending</span></li>
-      </ul>
-    </mat-card-content>
-    <mat-card-actions>
-      <button>View Details</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
-<div class="order-list">
-  <h3>Orders: 11 PM<span>No. #110013</span></h3>
-  <mat-card>
-    <mat-card-content>
-      <ul class="order-details">
-        <li>Name:<span>Gautam Kumar</span></li>
-        <li>Mobile:<span>9953210510</span></li>
-        <li>Status:<span>Pending</span></li>
-      </ul>
-    </mat-card-content>
-    <mat-card-actions>
-      <button>View Details</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<ng-container *ngIf="orders.length > 0">
+  <div *ngFor="let obj of orders[0] | keyvalue">
+    <h2>{{ obj.key | date: 'MMMM d, y' }}</h2>
+    <div class="order-list">
+      <ng-container *ngFor="let order of obj.value">
+        <h3>
+          <span>
+            Time: <span> {{ obj.value[0].date | date: 'h:mm a' }} </span>
+          </span>
+          <span>
+            No.
+            <span> #{{ obj.value[0].order_ref_code }} </span>
+          </span>
+        </h3>
+        <mat-card>
+          <mat-card-content>
+            <ul class="order-details">
+              <li>
+                Name:<span>{{ order.person_name }}</span>
+              </li>
+              <li>
+                Mobile:<span>{{ order.mobile }}</span>
+              </li>
+              <li>
+                Status:<button mat-flat-button color="warn" class="auto-basis">
+                  Pending
+                </button>
+              </li>
+            </ul>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-flat-button color="accent">
+              Details
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

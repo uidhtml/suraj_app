@@ -6,5 +6,6 @@
   <app-data-table
     [DATA_TABLE_HEADER]="header"
     [DATA_TABLE_ROWS]="rows"
+    (rowAction)="productAction($event)"
   ></app-data-table>
 </ng-template>

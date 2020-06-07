@@ -12,7 +12,7 @@ import { ROUTE_URLS } from '@app/route-urls-const';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  public url: string = '/orders.php';
+  public url: string = '/user-orders.php';
   public user_id: number = +localStorage.getItem('id');
   public dateArray: string[] = [];
   public products: any = [];

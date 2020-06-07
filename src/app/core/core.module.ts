@@ -23,6 +23,7 @@ import { DropDownMenuComponent } from '@shared/utility/drop-down-menu/drop-down-
     DropDownMenuComponent,
   ],
   exports: [
+    CommonModule,
     HeaderComponent,
     MainFooterComponent,
     MainCategoryLinksComponent,

@@ -9,6 +9,7 @@
 		$array = json_decode($_POST['orders']);
         require('./connection/dbConnection.php');
 		
+		$order_ref_code = random_strings(8);
 		foreach($array as $row => $value ){
 			$user_id = $value->user_id;
 			$product_id = $value->id;
@@ -16,7 +17,6 @@
 			$quantity = $value->quantity;
 			$unit = $value->unit;
 			$date = $value->date;
-			$order_ref_code = random_strings(8);
 			$status = $value->status;
 			$stmt = $con->prepare('INSERT orders (user_id, product_id,address_id,quantity,unit,date,order_ref_code,status) VALUES(?,?,?,?,?,?,?,?)');
 			$rc = $stmt->bind_param('iiiisssi',$user_id,$product_id,$address_id,$quantity,$unit,$date,$order_ref_code,$status);

@@ -8,7 +8,9 @@ h2 {
   background: none;
   box-shadow: unset;
 }
-
+.table-wrapper {
+  overflow: auto;
+}
 table {
   box-shadow: unset;
   min-width: 150vw;
@@ -24,11 +26,8 @@ table {
 }
 
 .mat-paginator {
-  margin: 0 auto;
-  background: none;
   font-size: 14px;
-  position: absolute;
-  right: 0;
+  padding-top: 30px;
 }
 
 .mat-paginator-page-size {
