@@ -1,6 +1,10 @@
 <h3>
-  <i class="material-icons">{{ page.icon }}</i
-  >{{ page.name }} product
+  <span>
+    <i class="material-icons">{{ page.icon }} </i>{{ page.name }} product
+  </span>
+  <span (click)="goBack()">
+    <i class="material-icons"> arrow_back </i> Back
+  </span>
 </h3>
 <form
   novalidate
@@ -37,9 +41,14 @@
       placeholder="Discounted  Price"
     />
   </label>
-  <label for="stock" aria-label="Stock Amount">
-    In Stock
-    <input type="text" formControlName="stock" placeholder="Amount in stock" />
+  <label for="gst" aria-label="GST">
+    GST
+    <input
+      type="number"
+      formControlName="gst"
+      placeholder="GST"
+      maxlength="2"
+    />
   </label>
   <label for="unit" aria-label="Product Unit">
     Unit
@@ -49,6 +58,12 @@
       <option value="g">Gram</option>
     </select>
   </label>
+
+  <label for="stock" aria-label="Stock Amount">
+    In Stock
+    <input type="text" formControlName="stock" placeholder="Amount in stock" />
+  </label>
+
   <label for="date" aria-label="Product Unit">
     Added date
     <input

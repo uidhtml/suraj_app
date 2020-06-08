@@ -41,7 +41,7 @@ img {
   color: #fff;
   border-radius: 3px;
   li {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     &:last-child {
       border-bottom: 0;
     }
@@ -70,7 +70,10 @@ img {
   border: dashed 1px lightgreen;
   font-size: 1.2rem;
 }
-
+.totalPrice {
+  color: crimson;
+  font-size: 1.4rem !important;
+}
 :host {
   background: #f7f7f7;
   position: relative;

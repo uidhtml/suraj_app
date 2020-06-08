@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '@shared/services/http.service';
 import { ApiHostService } from '@shared/services/api-host.service';
 
@@ -41,6 +41,14 @@ export class OrderDetailsComponent implements OnInit {
           }
         );
     });
+  }
+
+  getTotalAmount(): number {
+    let totalAmount = 0;
+    for (let product of this.orders) {
+      totalAmount += product.quantity * product.price;
+    }
+    return totalAmount;
   }
 
   goBack(): void {

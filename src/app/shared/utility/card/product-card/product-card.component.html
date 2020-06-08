@@ -22,7 +22,8 @@
           >{{ product.mrp | currency: '&#8377;' }}/{{ product.unit }}
         </span>
         <span class="price"
-          >{{ product.price | currency: '&#8377;' }}/{{ product.unit }}
+          >{{ product.price | currency: '&#8377;'
+          }}<span>/{{ product.unit }}</span>
         </span>
       </div>
       <app-product-counter

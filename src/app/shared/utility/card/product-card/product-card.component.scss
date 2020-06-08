@@ -47,8 +47,8 @@ h2 {
     }
   }
   h2 {
-    color: #333;
-    font-size: 2rem;
+    color: #666;
+    font-size: 1.6rem;
     line-height: 2rem;
     text-align: center;
     margin: 0 0 10px 0;
@@ -61,11 +61,10 @@ h2 {
     flex-wrap: wrap;
     span {
       margin: 2px 5px;
-      color: #deb887;
     }
   }
   .cut-out-price {
-    color: #aaa;
+    color: #999;
     position: relative;
     font-size: 1.3rem;
     font-weight: 300;
@@ -80,9 +79,13 @@ h2 {
     }
   }
   .price {
-    color: #31305f;
+    color: #000;
     font-size: 1.7rem;
     font-weight: bold;
+    span {
+      color: #999;
+      font-weight: normal;
+    }
   }
   .foodType {
     padding: 2px;

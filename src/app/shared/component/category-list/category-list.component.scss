@@ -4,6 +4,8 @@ h2 {
 .category {
   display: flex;
   width: 100%;
+  overflow: auto;
+  padding-bottom: 10px;
   li {
     margin-right: 5px;
     cursor: pointer;

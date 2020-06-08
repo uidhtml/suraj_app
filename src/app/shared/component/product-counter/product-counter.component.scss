@@ -1,55 +1,60 @@
 .addProductButton {
-    background: #f9b02c;
-    color: #fff;
-    text-align: center;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-    &:hover {
-        background-color: lightsalmon;
-    }
+  background: #f9b02c;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  width: 100%;
+  justify-content: center;
+  &:hover {
+    background-color: lightsalmon;
+  }
 }
 
 .btn {
-    border: 0;
-    background: #eee;
-    color: #333;
-    padding: 5px 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-size: 1rem;
+  border: 0;
+  background: #eee;
+  color: #333;
+  padding: 5px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .counter {
+  display: flex;
+  align-items: center;
+  button {
+    border: 0;
+    background: #f8e4bf;
+    color: #f9b02c;
     display: flex;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50px;
     align-items: center;
-    button {
-        border: 0;
-        background: #f8e4bf;
-        color: #f9b02c;
-        display: flex;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 20px;
-        border-radius: 50px;
+  }
+  .quantity {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #333;
+    font-weight: 600;
+    width: 40px;
+    box-sizing: border-box;
+    flex: 1 auto;
+    span {
+      font-weight: normal;
     }
-    .quantity {
-        text-align: center;
-        font-size: 1.4rem;
-        color: #333;
-        font-weight: 600;
-        width: 40px;
-        box-sizing: border-box;
-        span{
-          font-weight: normal;
-        }
-    }
+  }
 }
 
 :host {
-    display: block;
+  display: block;
+  width: 100%;
 }

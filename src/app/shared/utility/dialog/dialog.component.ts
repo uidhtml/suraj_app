@@ -13,8 +13,8 @@ export class DialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
-  onNoClick(success: number): void {
-    const status = success === 1 ? true : false;
+  onNoClick(type: string = ''): void {
+    const status = type === 'confirm' ? true : false;
     this.dialogRef.close(status);
   }
 }

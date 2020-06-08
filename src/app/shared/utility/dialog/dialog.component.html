@@ -8,7 +8,10 @@
   </ul>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick(data.success)" cdkFocusInitial>
+  <button mat-button (click)="onNoClick(data.type)" cdkFocusInitial>
     OK
+  </button>
+  <button *ngIf="data.type === 'confirm'" mat-button (click)="onNoClick()">
+    Cancle
   </button>
 </div>

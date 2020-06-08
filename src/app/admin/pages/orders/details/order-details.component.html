@@ -17,7 +17,25 @@
     <ul class="details">
       <li *ngFor="let order of orders">
         <span>{{ order.name }}</span
-        ><span>{{ order.quantity }}{{ order.unit }}</span>
+        ><span>
+          {{ order.quantity }} {{ order.unit }} x
+          {{ order.price | currency: '&#8377; ' }} =
+          {{ order.quantity * order.price | currency: '&#8377; ' }}</span
+        >
+      </li>
+      <li>
+        <span>Amount:</span
+        ><span>{{ getTotalAmount() | currency: '&#8377; ' }}</span>
+      </li>
+      <li>
+        <span>GST</span><span>{{ orders[0].gst }}%</span>
+      </li>
+      <li class="totalPrice">
+        <span>Total Amount</span
+        ><span>{{
+          getTotalAmount() + (getTotalAmount() * orders[0].gst) / 100
+            | currency: '&#8377; '
+        }}</span>
       </li>
     </ul>
   </div>

@@ -3,4 +3,11 @@ label {
 }
 h3 {
   text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    display: flex;
+    align-items: center;
+  }
 }

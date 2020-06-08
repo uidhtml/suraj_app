@@ -5,6 +5,7 @@ import {
   Validators,
   FormGroupDirective,
 } from '@angular/forms';
+import { Location } from '@angular/common';
 import { HttpService } from '@shared/services/http.service';
 import { ApiHostService } from '@shared/services/api-host.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -37,7 +38,7 @@ export class ProductFormComponent implements OnInit {
     private apiHostService: ApiHostService,
     public dialog: MatDialog,
     private readonly router: Router,
-    private activatedRoute: ActivatedRoute
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -58,6 +59,7 @@ export class ProductFormComponent implements OnInit {
       category: [null, [Validators.required]],
       mrp: [null, [Validators.required]],
       price: [null, [Validators.required]],
+      gst: [null, [Validators.required]],
       stock: [null, [Validators.required]],
       unit: [null, [Validators.required]],
       addedDate: [new Date(), [Validators.required]],
@@ -213,5 +215,9 @@ export class ProductFormComponent implements OnInit {
     str = str.replace(/\"/g, '\\"');
     str = str.replace(/\0/g, '\\0');
     return str;
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

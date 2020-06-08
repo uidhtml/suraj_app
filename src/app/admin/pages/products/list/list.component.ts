@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { DataTableElements } from '@shared/utility/data-table/data-table.interface';
 import { HttpService } from '@shared/services/http.service';
 import { ApiHostService } from '@shared/services/api-host.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '@shared/utility/dialog/dialog.component';
+import { ROUTE_URLS } from '@app/route-urls-const';
 
 @Component({
   selector: 'app-list',
@@ -27,7 +28,8 @@ export class ListComponent implements OnInit {
   constructor(
     private readonly httpService: HttpService,
     private readonly apiHostService: ApiHostService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {
     if (this.rows.length > 0) {
       for (const item of this.rows) {
@@ -59,19 +61,16 @@ export class ListComponent implements OnInit {
 
   productAction($event) {
     this.deleteId = $event.id;
-    this.httpService
-      .getHttp(
-        this.apiHostService.concatUrl(`/delete-product.php?id=${$event.id}`)
-      )
-      .subscribe(
-        (response: { success: number; msg: string }) => {
-          console.log(response);
-          this.openDialog(1, 'Haxxix says: Successfull!!', response.msg);
-        },
-        (error) => {
-          this.openDialog(-1, 'Haxxix says: Error!!', error.error.text);
-        }
+    if ($event.mode === 'delete') {
+      this.confirmDelete(
+        -1,
+        'Are you sure you want to delete?',
+        ' Please make sure any order is not pending to deliver?',
+        'confirm'
       );
+    } else {
+      this.router.navigate([`/admin/products/${ROUTE_URLS.EDIT}/${$event.id}`]);
+    }
   }
 
   openDialog(
@@ -87,15 +86,44 @@ export class ListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      this.rows = this.rows.filter((item) => {
+        return item.id !== this.deleteId;
+      });
+    });
+  }
+  confirmDelete(
+    success: number,
+    title: string,
+    msg: string,
+    type?: string,
+    status?: number,
+    error?: {}[]
+  ): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: 'auto',
+      data: { success, title, msg, type },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
-        this.rows = this.rows.filter((item) => {
-          return item.id !== this.deleteId;
-        });
-      } else {
-        if (status === 0) {
-          console.log(status);
-        }
+        this.deleteProduct();
       }
     });
+  }
+
+  deleteProduct() {
+    this.httpService
+      .getHttp(
+        this.apiHostService.concatUrl(`/delete-product.php?id=${this.deleteId}`)
+      )
+      .subscribe(
+        (response: { success: number; msg: string }) => {
+          console.log(response);
+          this.openDialog(1, 'Haxxix says: Successfull!!', response.msg);
+        },
+        (error) => {
+          this.openDialog(-1, 'Haxxix says: Error!!', error.error.text);
+        }
+      );
   }
 }
