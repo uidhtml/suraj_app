@@ -6,7 +6,7 @@ import { HttpService } from '@shared/services/http.service';
 import { ApiHostService } from '@shared/services/api-host.service';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '@shared/utility/dialog/dialog.component';
+import { InfoDialogComponent } from '@shared/utility/dialog/info-dialog/info-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -157,7 +157,7 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   openDialog(success: number, title: string, msg: string, error?: {}[]): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(InfoDialogComponent, {
       width: 'auto',
       data: { success, title, msg, error },
     });

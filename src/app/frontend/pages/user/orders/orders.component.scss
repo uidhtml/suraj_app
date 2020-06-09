@@ -14,7 +14,8 @@ header {
   border-radius: 5px;
   overflow: hidden;
   .details {
-    background-color: #faebd7;
+    background-color: #fffbf6;
+    border-left: solid 1px #f1e2ce;
     padding: 10px 13px;
     flex: 1 auto;
     height: 100%;
@@ -28,36 +29,28 @@ header {
 }
 .date {
   font-size: 1.2rem;
-  margin: 0 auto 5px;
   padding: 5px 0;
-  display: block;
-  max-width: 100px;
+  display: flex;
+  justify-content: space-between;
   align-self: center;
   font-weight: 600;
   text-align: center;
   background: #f9bd2c;
   border-radius: 3px;
   color: #fff;
+  padding: 5px 15px;
 }
 .itemListCon {
-  padding: 10px;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  &:last-child {
-    margin-bottom: 0;
-  }
   .itemList {
     margin-bottom: 10px;
     border-bottom: dashed 1px #eee;
     padding-bottom: 10px;
-    &:last-child {
-      margin-bottom: 0;
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
     li {
+      margin-bottom: 10px;
       a {
         position: relative;
         display: flex;
@@ -78,20 +71,16 @@ header {
       font-weight: 400;
     }
     h2 {
-      font-size: 1.3rem;
+      font-size: 1.6rem;
       display: block;
       margin-bottom: 10px;
-      color: #f9b02c;
+      color: #88734d;
     }
-    h3 {
-      color: #333;
-      font-size: 1.6rem;
+    .quantity {
+      color: #afafaf;
+      font-size: 1.3rem;
       margin-bottom: 5px;
       font-weight: 600;
-      display: flex;
-      .quantity {
-        font-size: 1.2rem;
-      }
     }
     .imgCol {
       max-width: 92px;
@@ -118,6 +107,7 @@ header {
       font-weight: 600;
       color: #777;
       font-size: 1.3rem;
+      margin-top: 10px;
     }
   }
 }
@@ -135,6 +125,17 @@ header {
     display: block;
     font-size: 8rem;
     color: red;
+  }
+}
+.total-price {
+  font-size: 2rem;
+  color: #498849;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    font-size: 1.3rem;
   }
 }
 :host {

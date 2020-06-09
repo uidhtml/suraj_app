@@ -4,7 +4,8 @@ import { DataTableElements } from '@shared/utility/data-table/data-table.interfa
 import { HttpService } from '@shared/services/http.service';
 import { ApiHostService } from '@shared/services/api-host.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '@shared/utility/dialog/dialog.component';
+import { ConfirmDialogComponent } from '@shared/utility/dialog/confirm-dialog/confirm-dialog.component';
+import { InfoDialogComponent } from '@shared/utility/dialog/info-dialog/info-dialog.component';
 import { ROUTE_URLS } from '@app/route-urls-const';
 
 @Component({
@@ -80,7 +81,7 @@ export class ListComponent implements OnInit {
     status?: number,
     error?: {}[]
   ): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(InfoDialogComponent, {
       width: 'auto',
       data: { success, title, msg, error },
     });
@@ -99,7 +100,7 @@ export class ListComponent implements OnInit {
     status?: number,
     error?: {}[]
   ): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: 'auto',
       data: { success, title, msg, type },
     });
@@ -118,7 +119,6 @@ export class ListComponent implements OnInit {
       )
       .subscribe(
         (response: { success: number; msg: string }) => {
-          console.log(response);
           this.openDialog(1, 'Haxxix says: Successfull!!', response.msg);
         },
         (error) => {

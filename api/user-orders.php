@@ -13,7 +13,7 @@
 	require('./connection/dbConnection.php');
 	$arr = array();
 
-	$stmt = $con->prepare("SELECT orders.*, products.name,products.category, products.image, shipping.person_name,shipping.country,shipping.state,shipping.city,shipping.pincode,shipping.address,shipping.landmark FROM orders INNER JOIN products ON orders.product_id = products.id INNER JOIN shipping ON orders.address_id=shipping.id WHERE orders.user_id = '$user_id'");
+	$stmt = $con->prepare("SELECT orders.*, products.name,products.category,products.price, products.image, shipping.person_name,shipping.country,shipping.state,shipping.city,shipping.pincode,shipping.address,shipping.landmark FROM orders INNER JOIN products ON orders.product_id = products.id INNER JOIN shipping ON orders.address_id=shipping.id WHERE orders.user_id = '$user_id'");
 	$stmt->execute();
 	$stmt->store_result();
 	$num_of_rows = $stmt->num_rows; 

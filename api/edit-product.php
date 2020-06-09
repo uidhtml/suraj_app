@@ -23,15 +23,17 @@
 	}
 
 	if(isset($_POST)){
-		//$data = convertToObject($_POST);
-		$id = $_POST['id'];
+		//$data = convertToObject($_POST);	
 		$name = $_POST['name'];
 		$category = $_POST['category'];
 		$mrp = $_POST['mrp'];
-		$image = $_POST['image'];
+		$mrp_unit = $_POST['mrp_unit'];		
 		$price = $_POST['price'];
+		$price_unit = $_POST['price_unit'];		
 		$stock = $_POST['stock'];
-		$unit = $_POST['unit'];
+		$stock_unit = $_POST['stock_unit'];
+		$image = $_POST['image'];
+		$gst = $_POST['gst'];
 		$date = $_POST['addedDate'];
 		$body = json_encode($_POST['body']);
 		$status = $_POST['status'];
@@ -53,14 +55,16 @@
 				$returnObj->error = $arr;
 			}
 		}
+
 		// UPDATE data into database
-		$stmt = $con->prepare('UPDATE products SET name=?,category=?,mrp=?,price=?,stock=?,unit=?,date=?,image=?,status=? WHERE id=?');
+		$stmt = $con->prepare("UPDATE products SET name=?,category=?,mrp=?,mrp_unit=?,price=?,price_unit=?,stock=?,stock_unit=?,gst=?,date=?,image=?,status=? WHERE id=?");
+
 		if ( false===$stmt ) {
 			$returnObj->msg = 'Unable to create prepare statement.';
 			die('prepare() failed: ');// . htmlspecialchars($mysqli->error));
 		}
-		$rc = $stmt->bind_param('ssiiisssii', $name,$category,$mrp,$price,$stock,$unit,$date,$image,$status,$id);
-		
+		$rc = $stmt->bind_param('ssisisisissii', $name,$category,$mrp,$mrp_unit,$price,$price_unit,$stock,$stock_unit,$gst,$date,$image,$status,$id);
+												
 		if ( false===$rc ) {
 			$returnObj->msg = 'Unable to bind values.';
 			die('prepare(33333) failed: '. htmlspecialchars($stmt->error));
@@ -71,7 +75,7 @@
 			die('prepare() failed:'. htmlspecialchars($stmt->error));
 		}else{
 			// UPDATE Body into database
-			$stmt = $con->prepare('UPDATE product_details SET body=? WHERE product_id=?');	
+			$stmt = $con->prepare("UPDATE product_details SET body=? WHERE product_id=?");	
 			$rc = $stmt->bind_param('si', $body,$id);
 			$rc = $stmt->execute();
 			if ( false===$rc ) {
@@ -81,11 +85,11 @@
 				$returnObj->success = 1;
 				$returnObj->msg = 'Record has been updated!!';
 				$returnObj->imageUrl = $siteUrl."/suraj-latest-backup/src/assets/uploads/images/".$image;
-
-				mysqli_close($con);
 			}
-			$stmt->close();
-		}		
+		}
+		$stmt->close();	
+		mysqli_close($con);
+			
 	}
 	echo json_encode($returnObj);
 ?>

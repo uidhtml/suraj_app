@@ -50,7 +50,7 @@
 			// Upload image
 			require_once('./classes/class.uploadFile.php');
 			$imageObj = new uploadFile();
-			$imageUploadStatus = $imageObj -> upload($imageFile, 'images/'); 
+			$imageUploadStatus = $imageObj -> upload($imageFile, 'images/profile_pic'); 
 			if($imageUploadStatus->result === 1){
 				$image = $imageUploadStatus->fileName;
 			}else{
@@ -142,6 +142,7 @@
 			}
 			$msg = $msg.' - '.$smsReturnData->msg;
 			$returnObj->msg = $msg;
+			$returnObj->otp = $otp;
 			$returnObj->success = 1;
 			
 			mysqli_close($con);

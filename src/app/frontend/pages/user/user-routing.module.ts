@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'orders/:order_range', component: OrdersComponent },
   { path: 'status', component: UserStatusComponent },
   { path: 'activation', component: ActivationComponent },
+  { path: 'activation/:otpSent', component: ActivationComponent },
   { path: 'shipping', component: ShippingComponent },
   { path: 'payment-mode', component: PaymentModeComponent },
 ];

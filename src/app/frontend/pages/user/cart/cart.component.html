@@ -34,7 +34,8 @@
                 <div class="details">
                   <h3 class="name">{{ item.name | titlecase }}</h3>
                   <p class="price">
-                    {{ item.price | currency: '&#8377; ' }}/kg
+                    {{ item.price | currency: '&#8377; ' }} /
+                    {{ item.price_unit }}
                   </p>
                   <app-product-counter
                     (changeProduct)="productStatus($event)"

@@ -7,7 +7,8 @@ import { ProductCounterComponent } from './component/product-counter/product-cou
 import { CategoryListComponent } from './component/category-list/category-list.component';
 import { DataTableComponent } from './utility/data-table/data-table.component';
 import { EditorJsComponent } from './utility/editor-js/editor-js.component';
-import { DialogComponent } from './utility/dialog/dialog.component';
+import { ConfirmDialogComponent } from './utility/dialog/confirm-dialog/confirm-dialog.component';
+import { InfoDialogComponent } from './utility/dialog/info-dialog/info-dialog.component';
 import { RouterModule } from '@angular/router';
 import { LoaderComponent } from './utility/loader/loader.component';
 
@@ -18,7 +19,8 @@ const projectSharedComponent = [
   CategoryListComponent,
   DataTableComponent,
   EditorJsComponent,
-  DialogComponent,
+  ConfirmDialogComponent,
+  InfoDialogComponent,
   LoaderComponent,
 ];
 const projectSharedModule = [CommonModule, MaterialModule, RouterModule];
@@ -26,7 +28,7 @@ const projectSharedModule = [CommonModule, MaterialModule, RouterModule];
 @NgModule({
   declarations: [...projectSharedComponent],
   imports: [...projectSharedModule],
-  entryComponents: [DialogComponent],
+  entryComponents: [ConfirmDialogComponent, InfoDialogComponent],
   exports: [...projectSharedModule, ...projectSharedComponent],
 })
 export class SharedModule {}

@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 import { HttpService } from '@shared/services/http.service';
 import { ApiHostService } from '@shared/services/api-host.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '@shared/utility/dialog/dialog.component';
+import { InfoDialogComponent } from '@shared/utility/dialog/info-dialog/info-dialog.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ROUTE_URLS } from '@app/route-urls-const';
 
@@ -58,10 +58,12 @@ export class ProductFormComponent implements OnInit {
       name: [null, [Validators.required]],
       category: [null, [Validators.required]],
       mrp: [null, [Validators.required]],
+      mrp_unit: [null, [Validators.required]],
       price: [null, [Validators.required]],
-      gst: [null, [Validators.required]],
+      price_unit: [null, [Validators.required]],
       stock: [null, [Validators.required]],
-      unit: [null, [Validators.required]],
+      stock_unit: [null, [Validators.required]],
+      gst: [null, [Validators.required]],
       addedDate: [new Date(), [Validators.required]],
       body: [null, [Validators.required]],
       image: [null, [Validators.required]],
@@ -195,7 +197,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   openDialog(success: number, title: string, msg: string, error?: {}[]): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(InfoDialogComponent, {
       width: 'auto',
       data: { success, title, msg, error },
     });

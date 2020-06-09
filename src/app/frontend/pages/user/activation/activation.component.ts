@@ -3,9 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from '@shared/services/http.service';
 import { ApiHostService } from '@shared/services/api-host.service';
 import { ROUTE_URLS } from '@app/route-urls-const';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '@shared/utility/dialog/dialog.component';
+import { InfoDialogComponent } from '@shared/utility/dialog/info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-activation',
@@ -17,6 +17,7 @@ export class ActivationComponent implements OnInit {
   public isOtpValidated: boolean = false;
   public isSmsSendSuccessfully: boolean = false;
   public pageName: string;
+  public otpSent: boolean = false;
   public isLoaderVisible: boolean = false;
   public form: FormGroup;
   public validateOtpForm: FormGroup;
@@ -26,6 +27,7 @@ export class ActivationComponent implements OnInit {
     private httpService: HttpService,
     private apiHostService: ApiHostService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     public dialog: MatDialog
   ) {
     this.form = this.fb.group({
@@ -40,6 +42,12 @@ export class ActivationComponent implements OnInit {
     this.router.url.indexOf('admin') === 1
       ? (this.pageName = 'admin')
       : (this.pageName = 'user');
+    this.activatedRoute.params.subscribe((params) => {
+      this.otpSent = params.otpSent;
+      this.isSmsSendSuccessfully = true;
+      const userMobile = localStorage.getItem('haxxixUserMobile');
+      this.form.controls.mobile.setValue(userMobile);
+    });
   }
 
   sendOtp($event): void {
@@ -112,7 +120,7 @@ export class ActivationComponent implements OnInit {
   }
 
   openDialog(success: number, title: string, msg: string, error?: {}[]): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(InfoDialogComponent, {
       width: 'auto',
       data: { success, title, msg, error },
     });

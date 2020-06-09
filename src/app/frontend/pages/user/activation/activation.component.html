@@ -6,7 +6,12 @@
     </a>
   </header>
   <h2 class="heading">Please activate your account</h2>
-  <form novalidate [formGroup]="form" (ngSubmit)="sendOtp($event)">
+  <form
+    *ngIf="!otpSent"
+    novalidate
+    [formGroup]="form"
+    (ngSubmit)="sendOtp($event)"
+  >
     <label
       >Enter mobile number
       <input formControlName="mobile" />

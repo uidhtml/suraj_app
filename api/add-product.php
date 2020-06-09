@@ -27,12 +27,15 @@
 		$name = $_POST['name'];
 		$category = $_POST['category'];
 		$mrp = $_POST['mrp'];
-		$image = $_POST['image'];
+		$mrp_unit = $_POST['mrp_unit'];		
 		$price = $_POST['price'];
-		$gst = $_POST['gst'];
+		$price_unit = $_POST['price_unit'];		
 		$stock = $_POST['stock'];
-		$unit = $_POST['unit'];
-		$imageFile = $_FILES['imageFile'];
+		$stock_unit = $_POST['stock_unit'];
+		
+		$image = $_POST['image'];
+		$gst = $_POST['gst'];
+		$imageFile = $_FILES['imageFile'];	
 		$date = $_POST['addedDate'];
 		$body = json_encode($_POST['body']);
 		$status = $_POST['status'];
@@ -46,12 +49,12 @@
 			$image = $imageUploadStatus->fileName;
 			
 			// insert data into database
-			$stmt = $con->prepare('INSERT INTO products (name,category,mrp,price,gst,stock,unit,date,image,status) VALUES(?,?,?,?,?,?,?,?,?,?)');
+			$stmt = $con->prepare('INSERT INTO products (name,category,mrp,mrp_unit,price,price_unit,stock,stock_unit,gst,date,image,status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)');
 			if ( false===$stmt ) {
 				$returnObj->msg = 'Unable to create prepare statement.';
 				die('prepare() failed: ');// . htmlspecialchars($mysqli->error));
 			}
-			$rc = $stmt->bind_param('ssiiiissss', $name,$category,$mrp,$price,$gst,$stock,$unit,$date,$image,$status);
+			$rc = $stmt->bind_param('ssisisisissi', $name,$category,$mrp,$mrp_unit,$price,$price_unit,$stock,$stock_unit,$gst,$date,$image,$status);
 			
 			if ( false===$rc ) {
 				$returnObj->msg = 'Unable to bind values.';

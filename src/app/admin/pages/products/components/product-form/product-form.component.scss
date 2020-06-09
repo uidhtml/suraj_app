@@ -11,3 +11,12 @@ h3 {
     align-items: center;
   }
 }
+.two-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  input,
+  select {
+    flex-basis: 45%;
+  }
+}

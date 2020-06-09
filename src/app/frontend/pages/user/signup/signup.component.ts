@@ -6,7 +6,7 @@ import { HttpService } from '@shared/services/http.service';
 import { ApiHostService } from '@shared/services/api-host.service';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '@shared/utility/dialog/dialog.component';
+import { InfoDialogComponent } from '@shared/utility/dialog/info-dialog/info-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -93,6 +93,8 @@ export class SignupComponent implements OnInit {
         }) => {
           this.isLoaderVisible = false;
           if (data.success === 1) {
+            localStorage.setItem('haxxixOTP', data.otp);
+            localStorage.setItem('haxxixUserMobile', this.mobile.value);
             this.openDialog(
               data.success,
               'Haxxix says: Successful!!',
@@ -153,14 +155,16 @@ export class SignupComponent implements OnInit {
   }
 
   openDialog(success: number, title: string, msg: string, error?: {}[]): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(InfoDialogComponent, {
       width: 'auto',
       data: { success, title, msg, error },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
-        this.router.navigate([`/${ROUTE_URLS.USER}/${ROUTE_URLS.ACTIVATION}`]);
+        this.router.navigate([
+          `/${ROUTE_URLS.USER}/${ROUTE_URLS.ACTIVATION}/send`,
+        ]);
       }
     });
   }

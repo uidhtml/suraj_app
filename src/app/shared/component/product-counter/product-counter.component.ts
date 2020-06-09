@@ -19,7 +19,6 @@ export class ProductCounterComponent implements OnInit {
     }
   }
   showProductCounter() {
-    console.log(this.product.unit);
     if (this.product.unit === 'g') {
       this.product.quantity += 50;
     } else {

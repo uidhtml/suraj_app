@@ -13,6 +13,7 @@ export class ProductCardComponent implements OnChanges, OnInit {
   public categories = [];
   public productType: string;
   public sliceProduct;
+  public unitForGram: string;
 
   constructor(private httpService: HttpService, private router: Router) {}
 
@@ -21,6 +22,19 @@ export class ProductCardComponent implements OnChanges, OnInit {
   }
 
   ngOnInit() {
+    console.log(this.products);
+    this.categories.forEach((category) => {
+      this.products[category].forEach((product) => {
+        if (product.unit === 'g') {
+          product.stock = product.stock / 1000;
+          if (product.stock >= 1) {
+            this.unitForGram = 'kg';
+          } else {
+            this.unitForGram = 'g';
+          }
+        }
+      });
+    });
     this.httpService.getAllProducts().subscribe((products) => {
       this.categories.length > 1
         ? (this.sliceProduct = 3)

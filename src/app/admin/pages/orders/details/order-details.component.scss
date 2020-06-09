@@ -19,7 +19,7 @@ img {
     justify-content: space-between;
     padding: 5px 0;
     margin-bottom: 5px;
-    border-bottom: dashed 1px #eee;
+    border-bottom: dashed 1px #cacaca;
     font-size: 1.3rem;
     text-transform: capitalize;
     span {
@@ -30,16 +30,16 @@ img {
   }
 }
 .productInfo {
+  padding: 10px 15px;
+  background-color: #eee;
+  color: #000;
+  border-radius: 3px;
   h2 {
     font-size: 2.4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  padding: 10px 15px;
-  background-color: #94cc8b;
-  color: #fff;
-  border-radius: 3px;
   li {
     font-size: 1.3rem;
     &:last-child {
@@ -72,7 +72,7 @@ img {
 }
 .totalPrice {
   color: crimson;
-  font-size: 1.4rem !important;
+  font-size: 2rem !important;
 }
 :host {
   background: #f7f7f7;

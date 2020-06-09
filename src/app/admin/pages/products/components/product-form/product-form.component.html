@@ -29,20 +29,51 @@
       placeholder="Fruits, vegetable, cereals etc..."
     />
   </label>
+  <label for="stock" aria-label="Stock Amount">
+    In Stock
+    <div class="two-col">
+      <input
+        type="number"
+        formControlName="stock"
+        placeholder="Amount in stock"
+      />
+      <select formControlName="stock_unit">
+        <option value="" selected="selected">Select unit for stock</option>
+        <option value="kg">Kilogram</option>
+        <option value="g">Gram</option>
+        <option value="p">Piece</option>
+      </select>
+    </div>
+  </label>
   <label for="mrp" aria-label="Cutout Price">
-    MRP
-    <input type="text" formControlName="mrp" placeholder="Original price" />
+    MRP per unit
+    <div class="two-col">
+      <input type="number" formControlName="mrp" placeholder="Original price" />
+      /
+      <input
+        type="text"
+        formControlName="mrp_unit"
+        placeholder="Ex- kg or 100g or number of piece"
+      />
+    </div>
   </label>
   <label for="price" aria-label="Our Price">
-    Our Price
-    <input
-      type="text"
-      formControlName="price"
-      placeholder="Discounted  Price"
-    />
+    Our Price per unit
+    <div class="two-col">
+      <input
+        type="number"
+        formControlName="price"
+        placeholder="Discounted  Price"
+      />/
+      <input
+        type="text"
+        formControlName="price_unit"
+        placeholder="Ex- kg or 100g or number of piece"
+      />
+    </div>
   </label>
   <label for="gst" aria-label="GST">
-    GST
+    GST %
     <input
       type="number"
       formControlName="gst"
@@ -50,20 +81,6 @@
       maxlength="2"
     />
   </label>
-  <label for="unit" aria-label="Product Unit">
-    Unit
-    <select formControlName="unit">
-      <option value="">Select</option>
-      <option value="kg">Kilogram</option>
-      <option value="g">Gram</option>
-    </select>
-  </label>
-
-  <label for="stock" aria-label="Stock Amount">
-    In Stock
-    <input type="text" formControlName="stock" placeholder="Amount in stock" />
-  </label>
-
   <label for="date" aria-label="Product Unit">
     Added date
     <input

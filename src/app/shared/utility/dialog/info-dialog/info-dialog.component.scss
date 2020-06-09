@@ -1,0 +1,26 @@
+h1 {
+  color: rgb(9, 199, 9);
+  font-size: 1.6rem;
+  margin-bottom: 5px;
+}
+
+p,
+li {
+  font-size: 1.3rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.error {
+  color: #ff2525;
+  background: none;
+  li {
+    color: inherit;
+  }
+}
+
+.mat-dialog-actions {
+  padding: 16px 0;
+}

@@ -32,12 +32,11 @@ export class OrderDetailsComponent implements OnInit {
             if (data) {
               if (data.results.length > 0) {
                 this.orders = data.results;
-                console.log(data);
               }
             }
           },
           (error) => {
-            console.log(error.error.text);
+            alert(error.error.text);
           }
         );
     });

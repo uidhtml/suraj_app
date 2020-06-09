@@ -1,4 +1,4 @@
-<ul class="category">
+<ul class="category" *ngIf="categories.length > 0">
   <li *ngFor="let category of categories" routerLinkActive="active">
     <a *ngIf="category === 'all'" routerLink="/products">{{ category }}</a>
     <a *ngIf="category !== 'all'" routerLink="/products/{{ category }}">{{

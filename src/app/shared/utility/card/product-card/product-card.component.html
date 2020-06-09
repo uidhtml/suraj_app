@@ -14,16 +14,17 @@
         />
       </div>
       <span class="inStock"
-        >In Stock: <span>{{ product.stock }}{{ product.unit }}</span></span
+        >In Stock:
+        <span>{{ product.stock }}{{ product.stock_unit }}</span></span
       >
       <h2>{{ product.name | titlecase }}</h2>
       <div class="priceCon">
         <span class="cut-out-price"
-          >{{ product.mrp | currency: '&#8377;' }}/{{ product.unit }}
+          >{{ product.mrp | currency: '&#8377;' }}/{{ product.mrp_unit }}
         </span>
         <span class="price"
           >{{ product.price | currency: '&#8377;'
-          }}<span>/{{ product.unit }}</span>
+          }}<span>/{{ product.price_unit }}</span>
         </span>
       </div>
       <app-product-counter

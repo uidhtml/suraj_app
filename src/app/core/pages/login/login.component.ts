@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { LoggerData } from './logger-data.interface';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '@shared/utility/dialog/dialog.component';
+import { InfoDialogComponent } from '@shared/utility/dialog/info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
     status?: number,
     error?: {}[]
   ): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(InfoDialogComponent, {
       width: 'auto',
       data: { success, title, msg, error },
     });
@@ -103,7 +103,6 @@ export class LoginComponent implements OnInit {
               `/${ROUTE_URLS.ADMIN}/${ROUTE_URLS.DASHBAORD}`,
             ]);
       } else {
-        console.log(status);
         if (status === 0) {
           this.router.navigate([
             `/${ROUTE_URLS.USER}/${ROUTE_URLS.ACTIVATION}`,

@@ -20,7 +20,6 @@ class uploadFile {
             // Set new file name, which will be uploaded
             $tempName = explode('.',$files['name']);
 			$this->newFileName = $journalName = preg_replace('/\s+/', '_', strtolower($tempName[0])).'.' . end($tempName);
-
             if($this->getFileMimeType($files) == 'image/jpeg' || $this->getFileMimeType($files) == 'image/jpg' 
             || $this->getFileMimeType($files) == 'image/png' || $this->getFileMimeType($files) == 'image/gif'){
                 $this->uploadOk = 1;
@@ -30,7 +29,9 @@ class uploadFile {
 					$this->status->msg = "Sorry, your file is too large in size (Allowed max 1MB).";
                     return $this->status;
                 }
-            }
+            }else{
+				
+			}
 
             if($this->getFileMimeType($files) == 'image/jpeg' || $this->getFileMimeType($files) == 'image/jpg' 
             || $this->getFileMimeType($files) == 'image/png' || $this->getFileMimeType($files) == 'image/gif'){

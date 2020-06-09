@@ -15,7 +15,7 @@
 			$product_id = $value->id;
 			$address_id = $value->address_id;
 			$quantity = $value->quantity;
-			$unit = $value->unit;
+			$unit = $value->price_unit;
 			$date = $value->date;
 			$status = $value->status;
 			$stmt = $con->prepare('INSERT orders (user_id, product_id,address_id,quantity,unit,date,order_ref_code,status) VALUES(?,?,?,?,?,?,?,?)');
