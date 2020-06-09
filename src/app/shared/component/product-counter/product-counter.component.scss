@@ -29,10 +29,12 @@
 .counter {
   display: flex;
   align-items: center;
+  background-color: #eee;
+  border-radius: 50px;
   button {
     border: 0;
-    background: #f8e4bf;
-    color: #f9b02c;
+    background: #3cc827;
+    color: #fff;
     display: flex;
     justify-content: center;
     cursor: pointer;
