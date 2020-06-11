@@ -11,7 +11,8 @@
           column.name !== 'delete' &&
           column.name !== 'price' &&
           column.name !== 'mrp' &&
-          column.name !== 'stock'
+          column.name !== 'stock' &&
+          column.name !== 'status'
         "
       >
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -78,6 +79,30 @@
           <mat-icon class="editItem" (click)="onRowClicked(element.id, 'edit')"
             >edit</mat-icon
           >
+        </td>
+      </ng-container>
+      <ng-container
+        matColumnDef="{{ column.name }}"
+        *ngIf="column.name === 'status'"
+      >
+        <th mat-header-cell *matHeaderCellDef>
+          {{ column.label }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon
+            *ngIf="+element.status === 0"
+            class="inactiveItem"
+            (click)="onRowClicked(element.id, 'edit')"
+          >
+            remove_shopping_cart
+          </mat-icon>
+          <mat-icon
+            *ngIf="+element.status === 1"
+            class="activeItem"
+            (click)="onRowClicked(element.id, 'edit')"
+          >
+            shopping_cart
+          </mat-icon>
         </td>
       </ng-container>
     </ng-container>

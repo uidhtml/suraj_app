@@ -120,6 +120,9 @@
       />
     </div>
   </label>
+  <mat-checkbox (change)="setStats($event)" formControlName="status"
+    >Activate product</mat-checkbox
+  >
   <button class="submit" *ngIf="page.name === 'add'" [disabled]="!form.valid">
     Add
   </button>

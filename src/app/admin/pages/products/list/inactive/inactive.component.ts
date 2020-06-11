@@ -9,11 +9,11 @@ import { InfoDialogComponent } from '@shared/utility/dialog/info-dialog/info-dia
 import { ROUTE_URLS } from '@app/route-urls-const';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  selector: 'app-inactive',
+  templateUrl: './inactive.component.html',
+  styleUrls: ['./inactive.component.scss'],
 })
-export class ListComponent implements OnInit {
+export class InactiveComponent implements OnInit {
   public isEmpty: boolean = false;
   public deleteId: number = null;
   public rows: DataTableElements[] = [];
@@ -24,6 +24,7 @@ export class ListComponent implements OnInit {
     { name: 'mrp', label: 'MRP' },
     { name: 'price', label: 'Our Price' },
     { name: 'stock', label: 'Stock' },
+    { name: 'status', label: 'Status' },
   ];
 
   constructor(
@@ -32,24 +33,16 @@ export class ListComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router
   ) {
-    if (this.rows.length > 0) {
-      for (const item of this.rows) {
-        item.stock = item.stock + ' ' + item.unit;
-        item.edit = 'edit';
-        item.delete = 'delete';
-      }
-    }
     if (this.header.length > 0) {
-      this.header.push(
-        { name: 'edit', label: '' },
-        { name: 'delete', label: '' }
-      );
+      this.header.push({ name: 'edit', label: '' });
     }
   }
 
   ngOnInit() {
     this.httpService
-      .getHttp(this.apiHostService.concatUrl('/products.php'))
+      .getHttp(
+        this.apiHostService.concatUrl('/admin-products.php?active=inactive')
+      )
       .subscribe((data: { success: number; results: DataTableElements[] }) => {
         if (data.results.length) {
           this.rows = data.results;

@@ -6,9 +6,9 @@
       <div class="order-list">
         <ng-container *ngFor="let order of obj.value">
           <h4>
-            <button class="counting" mat-flat-button color="accent">
+            <span class="counting" mat-flat-button color="accent">
               {{ i + 1 }}
-            </button>
+            </span>
             <span>
               Time: <span> {{ obj.value[0].date | date: 'h:mm a' }} </span>
             </span>

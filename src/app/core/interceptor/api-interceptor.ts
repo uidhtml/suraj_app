@@ -8,7 +8,7 @@ import {
   HttpUserEvent,
   HttpProgressEvent,
   HttpHeaderResponse,
-  HttpSentEvent
+  HttpSentEvent,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -40,7 +40,7 @@ export class ApiInterceptor implements HttpInterceptor {
       tap(
         (event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
-            console.log(event);
+            //console.log(event);
           }
         },
         (err: any) => {

@@ -50,7 +50,7 @@
 			// Upload image
 			require_once('./classes/class.uploadFile.php');
 			$imageObj = new uploadFile();
-			$imageUploadStatus = $imageObj -> upload($imageFile, 'images/profile_pic'); 
+			$imageUploadStatus = $imageObj -> upload($imageFile, 'images/profile_pic/'); 
 			if($imageUploadStatus->result === 1){
 				$image = $imageUploadStatus->fileName;
 			}else{

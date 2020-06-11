@@ -32,13 +32,18 @@
 		$price_unit = $_POST['price_unit'];		
 		$stock = $_POST['stock'];
 		$stock_unit = $_POST['stock_unit'];
-		
 		$image = $_POST['image'];
 		$gst = $_POST['gst'];
 		$imageFile = $_FILES['imageFile'];	
 		$date = $_POST['addedDate'];
 		$body = json_encode($_POST['body']);
-		$status = $_POST['status'];
+
+		if(!empty($_POST['status'])){
+			$status = $_POST['status'];
+		}else{
+			$status = 0;
+		}
+		
 		// Upload image
 		require_once('./classes/class.uploadFile.php');
 		$imageObj = new uploadFile();

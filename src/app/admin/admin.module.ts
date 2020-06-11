@@ -5,11 +5,11 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { MaterialModule } from './../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { BannerComponent } from './pages/banner/banner.component';
 
 @NgModule({
-  declarations: [AdminComponent, DashboardComponent],
+  declarations: [AdminComponent, BannerComponent],
   imports: [
     AdminRoutingModule,
     MaterialModule,

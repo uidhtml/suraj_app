@@ -1,0 +1,13 @@
+<h3>
+  <mat-icon class="activeItem">shopping_cart_active</mat-icon>Active Products
+</h3>
+<ng-container *ngIf="isEmpty === true; else dataTable">
+  <p>No records found.</p>
+</ng-container>
+<ng-template #dataTable>
+  <app-data-table
+    [DATA_TABLE_HEADER]="header"
+    [DATA_TABLE_ROWS]="rows"
+    (rowAction)="productAction($event)"
+  ></app-data-table>
+</ng-template>

@@ -11,7 +11,7 @@
 	require('./connection/dbConnection.php');
 	$arr = [];
 
-	$stmt = "SELECT * FROM products";
+	$stmt = "SELECT * FROM products WHERE status=1";
 	$results = $con->query($stmt);
 	while($row = $results->fetch_object()) {
 	  $arr[] = $row;

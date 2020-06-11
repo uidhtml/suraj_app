@@ -5,8 +5,11 @@ export interface DataTableElements {
   name: string;
   category: string;
   image?: string;
-  cutoutPrice: number;
-  price: number;
-  unit: string;
-  stock: number | string;
+  price: string;
+  price_unit: string;
+  mrp: string;
+  mrp_unit: string;
+  stock: string;
+  stock_unit: string;
+  status: string;
 }

@@ -8,15 +8,27 @@ import { AuthService } from '@shared/services/auth.service';
 })
 export class SidebarComponent implements OnInit {
   @Input() pageName: string;
+  @Input() loggerName: string;
   public isOpenSidebar: boolean = false;
 
   public links = [];
 
   public adminLinks = [
     { title: 'dashboard', icon: 'dashboard', link: 'dashboard' },
-    { title: 'all orders', icon: 'shopping_cart', link: 'orders' },
-    { title: 'all product', icon: 'category', link: 'products' },
+    { title: 'all product', icon: 'category', link: 'products/' },
     { title: 'add product', icon: 'add', link: 'products/add' },
+    {
+      title: 'active product',
+      icon: 'shopping_cart_active',
+      link: 'products/active',
+    },
+    {
+      title: 'inactive product',
+      icon: 'remove_shopping_cart',
+      link: 'products/inactive',
+    },
+    { title: 'all orders', icon: 'list_alt', link: 'orders' },
+    { title: 'edit banner', icon: 'view_carousel', link: 'banner/edit' },
   ];
   public userLinks = [
     { title: 'orders', icon: 'history', link: 'orders/latest' },
@@ -30,6 +42,9 @@ export class SidebarComponent implements OnInit {
       name === 'user'
         ? (this.links = this.userLinks)
         : (this.links = this.adminLinks);
+      const firstName = localStorage.getItem('firstName');
+      const lastName = localStorage.getItem('lastName');
+      this.loggerName = `${firstName} ${lastName}`;
     });
   }
 

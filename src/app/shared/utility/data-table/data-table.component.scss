@@ -13,7 +13,6 @@ h2 {
 }
 table {
   box-shadow: unset;
-  min-width: 150vw;
   th,
   td {
     button {
@@ -90,6 +89,12 @@ table {
 }
 .editItem {
   color: #006699;
+}
+.inactiveItem {
+  color: #c5c5c5;
+}
+.activeItem {
+  color: #3cc827;
 }
 .deleteItem {
   color: red;

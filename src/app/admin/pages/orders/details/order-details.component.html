@@ -3,44 +3,6 @@
     <i class="material-icons" (click)="goBack()">arrow_back</i>
     <div class="title">Order Details<span class="separator"></span></div>
   </header>
-  <div class="wrapper productInfo">
-    <h2>
-      Products
-      <span *ngIf="+orders[0].status === 0" class="auto-basis not-delivered">
-        Not Delivered
-      </span>
-
-      <span *ngIf="+orders[0].status === 1" class="auto-basis delivered">
-        Delivered
-      </span>
-    </h2>
-    <ul class="details">
-      <li *ngFor="let order of orders">
-        <span>{{ order.name }}</span
-        ><span>
-          {{ order.quantity }} x {{ order.price | currency: '&#8377; ' }}
-          <span style="color: #8e8a8a; font-weight: 600; font-size: 1.1rem;">
-            /{{ order.unit }}
-          </span>
-          = {{ order.quantity * order.price | currency: '&#8377; ' }}</span
-        >
-      </li>
-      <li>
-        <span>Amount:</span
-        ><span>{{ getTotalAmount() | currency: '&#8377; ' }}</span>
-      </li>
-      <li>
-        <span>GST</span><span>{{ orders[0].gst }}%</span>
-      </li>
-      <li class="totalPrice">
-        <span>Total Amount</span
-        ><span>{{
-          getTotalAmount() + (getTotalAmount() * orders[0].gst) / 100
-            | currency: '&#8377; '
-        }}</span>
-      </li>
-    </ul>
-  </div>
   <div class="wrapper personInfo">
     <h2>Person Info:</h2>
     <ul class="details">
@@ -80,4 +42,66 @@
       </li>
     </ul>
   </div>
+  <div class="wrapper productInfo">
+    <h2>
+      Products
+      <span *ngIf="+orders[0].status === 0" class="auto-basis not-delivered">
+        Not Delivered
+      </span>
+
+      <span *ngIf="+orders[0].status === 1" class="auto-basis delivered">
+        Delivered
+      </span>
+    </h2>
+    <ul class="details">
+      <li *ngFor="let order of orders">
+        <span>{{ order.name }}</span
+        ><span>
+          {{ order.quantity }} x {{ order.price | currency: '&#8377; ' }}
+          <span style="color: #8e8a8a; font-weight: 600; font-size: 1.1rem;">
+            /{{ order.unit }}
+          </span>
+          = {{ order.quantity * order.price | currency: '&#8377; ' }}</span
+        >
+      </li>
+      <li>
+        <span>Amount:</span
+        ><span>{{ getTotalAmount() | currency: '&#8377; ' }}</span>
+      </li>
+      <li>
+        <span>GST</span><span>{{ orders[0].gst }}%</span>
+      </li>
+      <li>
+        <span>Ref Code</span
+        ><span style="color: #808080; font-weight: 600; font-style: italic;"
+          >#{{ orders[0].order_ref_code }}</span
+        >
+      </li>
+      <li class="totalPrice">
+        <span>Total Amount</span
+        ><span>{{
+          getTotalAmount() + (getTotalAmount() * orders[0].gst) / 100
+            | currency: '&#8377; '
+        }}</span>
+      </li>
+    </ul>
+  </div>
+  <button
+    *ngIf="orders[0].status === 0"
+    class="remove-order"
+    mat-raised-button
+    color="warn"
+    (click)="orderAction(orders[0].order_ref_code, orders[0].id)"
+  >
+    Remove order
+  </button>
+  <button
+    *ngIf="orders[0].status === 1"
+    [disabled]="orders[0].status === 1"
+    class="remove-order"
+    mat-raised-button
+    color="primary"
+  >
+    Delived and paid
+  </button>
 </div>

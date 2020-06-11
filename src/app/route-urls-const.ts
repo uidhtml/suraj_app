@@ -4,6 +4,7 @@ export const ROUTE_URLS = {
   LOGIN: 'login',
   ADMIN: 'admin',
   USER: 'user',
+  USERS: 'users',
   ADD: 'add',
   EDIT: 'edit',
   DELETE: 'delete',
@@ -27,4 +28,5 @@ export const ROUTE_URLS = {
   PAYMENTMODE: 'payment-mode',
   ORDERS: 'orders',
   PROFILE: 'profile',
+  BANNER: 'banner',
 };

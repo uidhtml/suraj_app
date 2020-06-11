@@ -16,7 +16,7 @@
 		$id = $data->id;
 
 		// DELETE data from database
-		$stmt = $con->prepare('DELETE products, product_details FROM products INNER JOIN product_details ON product_details.product_id = products.id WHERE products.id=?');
+		$stmt = $con->prepare('UPDATE products SET status=0 WHERE id=?');
 		if ( false===$stmt ) {
 			$returnObj->success = -1;
 			$returnObj->msg = 'Unable to create prepare statement.';

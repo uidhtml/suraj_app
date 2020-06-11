@@ -43,13 +43,17 @@ h5,
 h4 {
   font-weight: 300;
 }
-h3 {
+h3,
+h2 {
   margin-bottom: 20px;
   font-size: 1.6rem;
   font-weight: 600;
   color: #5d5d5d;
   display: flex;
   align-items: center;
+}
+h2 {
+  font-size: 1.8rem;
 }
 h5 {
   font-size: 1.2rem;

@@ -8,7 +8,12 @@
   </ul>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="ok(data.success)" cdkFocusInitial>
+  <button
+    mat-raised-button
+    (click)="ok(data.success)"
+    color="accent"
+    cdkFocusInitial
+  >
     OK
   </button>
 </div>

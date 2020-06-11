@@ -6,6 +6,8 @@ import { AdminComponent } from './admin.component';
 import { ROUTE_URLS } from '../route-urls-const';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './../shared/guard/auth.guard';
+import { BannerComponent } from './pages/banner/banner.component';
+import { UsersListComponent } from './pages/users-list/users-list.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,10 @@ const routes: Routes = [
         path: ROUTE_URLS.DASHBAORD,
         component: DashboardComponent,
         canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./pages/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
       },
       {
         path: ROUTE_URLS.PRODUCTS,
@@ -33,6 +39,16 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         loadChildren: () =>
           import('./pages/orders/orders.module').then((m) => m.OrdersModule),
+      },
+      {
+        path: `${ROUTE_URLS.BANNER}/:status`,
+        canActivate: [AuthGuard],
+        component: BannerComponent,
+      },
+      {
+        path: `${ROUTE_URLS.BANNER}/:status`,
+        canActivate: [AuthGuard],
+        component: BannerComponent,
       },
       {
         path: '',

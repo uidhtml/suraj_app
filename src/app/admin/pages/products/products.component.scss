@@ -1,3 +1,6 @@
 .outerWrapper {
   padding-top: 80px;
 }
+::ng-deep table {
+  min-width: 150vw;
+}

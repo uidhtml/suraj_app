@@ -2,8 +2,7 @@
   <header>
     <i class="material-icons" (click)="goBack()">arrow_back</i>
     <div class="title">
-      My Cart ({{ productIncart }})<span class="separator"></span
-      ><span>Pincode: 110019</span>
+      My Cart ({{ productIncart }})<span class="separator"></span>
     </div>
   </header>
   <div class="subTotal">
@@ -29,7 +28,7 @@
             <div class="itemContainer">
               <div class="col leftCol">
                 <div class="imgCol">
-                  <img src="/assets//uploads/images/{{ item.image }}" alt="" />
+                  <img src="/assets/uploads/images/{{ item.image }}" alt="" />
                 </div>
                 <div class="details">
                   <h3 class="name">{{ item.name | titlecase }}</h3>

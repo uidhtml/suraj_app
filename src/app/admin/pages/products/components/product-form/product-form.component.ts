@@ -67,7 +67,7 @@ export class ProductFormComponent implements OnInit {
       addedDate: [new Date(), [Validators.required]],
       body: [null, [Validators.required]],
       image: [null, [Validators.required]],
-      status: ['0'],
+      status: [0],
     });
   }
 
@@ -209,6 +209,14 @@ export class ProductFormComponent implements OnInit {
         ]);
       }
     });
+  }
+
+  setStats($event) {
+    let status = 0;
+    if ($event.checked) {
+      status = 1;
+    }
+    this.form.get('status').setValue(status);
   }
 
   addslashes(str) {

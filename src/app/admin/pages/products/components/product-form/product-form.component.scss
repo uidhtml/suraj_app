@@ -20,3 +20,8 @@ h3 {
     flex-basis: 45%;
   }
 }
+
+::ng-deep label {
+  width: auto;
+  font-weight: normal;
+}

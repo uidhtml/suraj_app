@@ -22,7 +22,7 @@ export class ShippingComponent implements OnInit {
   public totalAmount: number = 0;
   public isAddressSelected: boolean = false;
   public isLoaderVisible: boolean = false;
-  public pincodes: number[] = [110019, 110020, 110021];
+  public pincodes: number[] = [813210, 812001, 812003, 812005];
   public form: FormGroup;
 
   constructor(

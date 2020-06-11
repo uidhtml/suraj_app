@@ -1,1 +1,5 @@
-<img src="/assets/images/hero-banner.jpg" alt="" />
+<img
+  *ngIf="hero_banner.length > 0"
+  src="/assets/uploads/images/hero_banner/{{ hero_banner[0].image }}"
+  alt=""
+/>

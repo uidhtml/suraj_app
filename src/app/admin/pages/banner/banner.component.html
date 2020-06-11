@@ -1,0 +1,60 @@
+<div class="outerWrapper">
+  <h3>
+    <span>
+      <i class="material-icons">{{ page.icon }} </i>{{ page.name }} Banner
+    </span>
+    <span (click)="goBack()">
+      <i class="material-icons"> arrow_back </i> Back
+    </span>
+  </h3>
+  <form
+    novalidate
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    #formGroupDirective
+    enctype="multipart/form-data"
+  >
+    <label for="image"
+      >Upload Image
+      <input
+        type="file"
+        (change)="getFileInputValue($event, 'shareImage')"
+        accept=".jpg,.jpeg,.gif,.png"
+      />
+      <div class="previewCon">
+        <img
+          class="preview"
+          #preview
+          [src]="
+            form.controls.image.value
+              ? '/assets/uploads/images/hero_banner/' +
+                form.controls.image.value
+              : '/assets/images/default-product-image.jpg'
+          "
+        />
+      </div>
+    </label>
+    <label for="date" aria-label="Product Unit">
+      Added date
+      <input
+        type="text"
+        formControlName="addedDate"
+        readonly
+        placeholder="Product added date"
+      />
+    </label>
+    <mat-checkbox (change)="setStats($event)" formControlName="status"
+      >Activate Banner</mat-checkbox
+    >
+    <button class="submit" *ngIf="page.name === 'add'" [disabled]="!form.valid">
+      Add
+    </button>
+    <button
+      class="submit"
+      *ngIf="page.name === 'edit'"
+      [disabled]="!form.valid"
+    >
+      Update
+    </button>
+  </form>
+</div>

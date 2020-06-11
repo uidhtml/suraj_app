@@ -23,15 +23,19 @@ img {
     font-size: 1.3rem;
     text-transform: capitalize;
     span {
+      &:first-child {
+        flex-basis: 45%;
+      }
       &:last-child {
         font-weight: bold;
+        text-align: right;
       }
     }
   }
 }
 .productInfo {
   padding: 10px 15px;
-  background-color: #eee;
+  background-color: #fff;
   color: #000;
   border-radius: 3px;
   h2 {
@@ -49,11 +53,19 @@ img {
 }
 .personInfo {
   padding: 10px 15px;
-  background-color: #fff;
+  background-color: #eee;
   border-radius: 3px;
   li {
     &:first-child {
       border-bottom: 0;
+    }
+    span {
+      &:first-child {
+        flex-basis: 45%;
+      }
+      &:last-child {
+        text-align: right;
+      }
     }
   }
 }
@@ -74,6 +86,11 @@ img {
   color: crimson;
   font-size: 2rem !important;
 }
+
+.remove-order {
+  width: 100%;
+}
+
 :host {
   background: #f7f7f7;
   position: relative;

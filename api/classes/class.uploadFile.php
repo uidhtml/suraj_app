@@ -28,38 +28,34 @@ class uploadFile {
                     $this->status->result = -1;
 					$this->status->msg = "Sorry, your file is too large in size (Allowed max 1MB).";
                     return $this->status;
-                }
-            }else{
-				
-			}
-
-            if($this->getFileMimeType($files) == 'image/jpeg' || $this->getFileMimeType($files) == 'image/jpg' 
-            || $this->getFileMimeType($files) == 'image/png' || $this->getFileMimeType($files) == 'image/gif'){
-                if($this->checkForFileExists($this->newFileName)){
-                    $this->uploadOk = 0;
-					$this->status->result = 1;
-					$this->status->msg = "File already exists.";
-					$this->status->fileName = $this->newFileName;
-					return $this->status;
-                }
-                 // call upload function finally
-                if($this->uploadOk !== 0){
-                    move_uploaded_file($files["tmp_name"], $this->target_dir.''.$this->newFileName);
-					$this->status->result = 1;
-					$this->status->msg = "uploaded";
-					$this->status->fileName = $this->newFileName;
-                    return $this->status;
                 }else{
-					$this->status->result = -1;
-					$this->status->msg = "Sorry, your file was not uploaded.";
-                    return $this->status;
-                }
+					if($this->checkForFileExists($this->newFileName)){
+						$this->uploadOk = 0;
+						$this->status->result = 1;
+						$this->status->msg = "File already exists.";
+						$this->status->fileName = $this->newFileName;
+						return $this->status;
+					}
+					 // call upload function finally
+					if($this->uploadOk !== 0){
+						move_uploaded_file($files["tmp_name"], $this->target_dir.''.$this->newFileName);
+						$this->status->result = 1;
+						$this->status->msg = "uploaded";
+						$this->status->fileName = $this->newFileName;
+						return $this->status;
+					}else{
+						$this->status->result = -1;
+						$this->status->msg = "Sorry, your file was not uploaded.";
+						return $this->status;
+					}
+				}
             }else{
                 $this->uploadOk = 0;
 				$this->status->result = -1;
 				$this->status->msg = "This type of file can not be uploaded.";
                 return $this->status;
-            }
+            }               
+            
         }else{
 			$this->status->result = -1;
 			$this->status->msg = "No such directory exists.";

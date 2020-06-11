@@ -1,6 +1,7 @@
 <div class="sidebarWrapper" [ngClass]="{ slideOut: !isOpenSidebar }">
   <header>
-    <i class="material-icons">person</i><span class="title">Gautam Kumar</span>
+    <i class="material-icons">person</i
+    ><span class="title">{{ loggerName }}</span>
   </header>
   <div class="block" *ngFor="let item of links">
     <ul (click)="closeSidebar($event)">
